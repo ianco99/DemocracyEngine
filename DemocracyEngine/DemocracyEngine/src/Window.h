@@ -16,5 +16,6 @@ namespace DemoEngine_Window
 
 		bool GetIsCreated();
 		GLFWwindow* GetGLFWwindow();
+		void SwapBuffers();
 	};
 }

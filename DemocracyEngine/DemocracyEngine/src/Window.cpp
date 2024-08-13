@@ -39,6 +39,12 @@ namespace DemoEngine_Window
 		glfwMakeContextCurrent(glfwWindow);
 	}
 
+	void Window::SwapBuffers()
+	{
+		/* Swap front and back buffers */
+		glfwSwapBuffers(glfwWindow);
+	}
+
 	bool Window::GetIsCreated()
 	{
 		return isCreated;
