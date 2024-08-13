@@ -6,31 +6,40 @@ namespace DemoEngine_Window
 {
 	Window::Window(float width, float height, const char* windowTitle)
 	{
-		/* Create a windowed mode window and its OpenGL context */
-		glfwWindow = glfwCreateWindow(width, height, windowTitle, NULL, NULL);
-
-		if (!glfwWindow)
+		/* Initialize the library */
+		if (!glfwInit())
 		{
-			glfwTerminate();
 			isCreated = false;
-
-			//TODO: CREAR DEBUG MANAGER PARA TENER DEBUGS DE COLORES Y CON FORMATEOS Y FONTS Y FONT SIZE Y COSO
-			//besos enzito
-			std::cout << "Window creation could not be completed.";
 		}
 		else
 		{
-			isCreated = true;
+			/* Create a windowed mode window and its OpenGL context */
+			glfwWindow = glfwCreateWindow(width, height, windowTitle, NULL, NULL);
 
-			InitWindow();
+			if (!glfwWindow)
+			{
+				glfwTerminate();
+				isCreated = false;
 
-			std::cout << "Window has been successfully created.";
+				//TODO: CREAR DEBUG MANAGER PARA TENER DEBUGS DE COLORES Y CON FORMATEOS Y FONTS Y FONT SIZE Y COSO
+				//besos enzito
+				std::cout << "Window creation could not be completed." << std::endl;
+			}
+			else
+			{
+				isCreated = true;
+
+				InitWindow();
+
+				std::cout << "Window has been successfully created." << std::endl;
+			}
 		}
 	}
 
 	Window::~Window()
 	{
-
+		TerminateWindow();
+		std::cout << "Deleted window." << std::endl;
 	}
 
 	void Window::InitWindow()
@@ -45,6 +54,12 @@ namespace DemoEngine_Window
 		glfwSwapBuffers(glfwWindow);
 	}
 
+	void Window::PollEvents()
+	{
+		/* Poll for and process events */
+		glfwPollEvents();
+	}
+
 	bool Window::GetIsCreated()
 	{
 		return isCreated;
@@ -53,5 +68,10 @@ namespace DemoEngine_Window
 	GLFWwindow* Window::GetGLFWwindow()
 	{
 		return glfwWindow;
+	}
+
+	void Window::TerminateWindow()
+	{
+		glfwTerminate();
 	}
 }

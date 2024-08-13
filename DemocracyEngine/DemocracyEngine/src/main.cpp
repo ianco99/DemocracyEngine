@@ -1,29 +1,31 @@
 #include "glfw3.h"
 #include "Window.h"
+#include "Renderer.h"
 
 using namespace DemoEngine_Window;
+using namespace DemoEngine_Renderer;
 
 int main(void)
 {
+    Window* window = new Window(1024, 720, "Democracy Engine");
+    Renderer* renderer = new Renderer();
+    
     //ESTO ES BASE GAME
-    /* Initialize the library */
-    if (!glfwInit())
+    if (!window->GetIsCreated())
         return -1;
     
-    Window window = Window(1024, 720, "Democracy Engine");
-
     /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window.GetGLFWwindow()))  //BASE GAME
+    while (!glfwWindowShouldClose(window->GetGLFWwindow()))  //BASE GAME
     {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
+        renderer->RenderFrame();
 
-        window.SwapBuffers();
+        window->SwapBuffers();
 
-        /* Poll for and process events */
-        glfwPollEvents();
+        window->PollEvents();
     }
 
-    glfwTerminate();
+    delete renderer;
+    delete window;
+
     return 0;
 }

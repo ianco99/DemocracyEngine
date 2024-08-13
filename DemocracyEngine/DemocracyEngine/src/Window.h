@@ -9,13 +9,17 @@ namespace DemoEngine_Window
 		bool isCreated = false;
 
 		void InitWindow();
+		void TerminateWindow();
 
 	public:
 		Window(float width, float height, const char* windowTitle);
 		~Window();
+		
 
 		bool GetIsCreated();
 		GLFWwindow* GetGLFWwindow();
 		void SwapBuffers();
+		void PollEvents();
+
 	};
 }
