@@ -1,3 +1,5 @@
+#pragma once
+
 namespace DemoEngine_Renderer
 {
 	class Renderer

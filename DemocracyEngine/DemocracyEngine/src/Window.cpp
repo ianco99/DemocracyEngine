@@ -42,6 +42,11 @@ namespace DemoEngine_Window
 		std::cout << "Deleted window." << std::endl;
 	}
 
+	bool Window::ShouldClose()
+	{
+		return glfwWindowShouldClose(glfwWindow);
+	}
+
 	void Window::InitWindow()
 	{
 		/* Make the window's context current */
