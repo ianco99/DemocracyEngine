@@ -19,15 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\BaseGame.cpp" />
+    <ClCompile Include="src\BaseGame\BaseGame.cpp" />
+    <ClCompile Include="src\Entities\Entity.cpp" />
+    <ClCompile Include="src\Entities\Entity2D.cpp" />
+    <ClCompile Include="src\Entities\Shape.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Renderer.cpp" />
-    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\Render\Renderer.cpp" />
+    <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BaseGame.h" />
-    <ClInclude Include="src\Renderer.h" />
-    <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\BaseGame\BaseGame.h" />
+    <ClInclude Include="src\Entities\Entity.h" />
+    <ClInclude Include="src\Entities\Entity2D.h" />
+    <ClInclude Include="src\Entities\Shape.h" />
+    <ClInclude Include="src\Render\Renderer.h" />
+    <ClInclude Include="src\Window\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
