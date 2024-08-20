@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
-#include "Renderer.h"
-#include "Window.h"
+#include "../Render/Renderer.h"
+#include "../Window/Window.h"
 
 using namespace DemoEngine_Window;
 using namespace DemoEngine_Renderer;
