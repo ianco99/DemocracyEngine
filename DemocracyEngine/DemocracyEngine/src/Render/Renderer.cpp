@@ -24,6 +24,11 @@ namespace DemoEngine_Renderer
 		std::cout << "Deleted renderer." << std::endl;
 	}
 
+	void Renderer::Update()
+	{
+		RenderFrame();
+	}
+
 	void Renderer::RenderFrame()
 	{
 		unsigned int VBO;

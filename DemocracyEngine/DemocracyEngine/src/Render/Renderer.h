@@ -11,5 +11,6 @@ namespace DemoEngine_Renderer
 		~Renderer();
 
 		void RenderFrame();
+		void Update();
 	};
 }

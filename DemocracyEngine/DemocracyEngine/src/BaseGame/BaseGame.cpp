@@ -30,7 +30,7 @@ namespace DemoEngine_BaseGame
 		/* Loop until the user closes the window */
 		while (!window->ShouldClose())
 		{
-			renderer->RenderFrame();
+			renderer->Update();
 
 			window->SwapBuffers();
 
