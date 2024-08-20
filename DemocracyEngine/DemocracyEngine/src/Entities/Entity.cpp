@@ -1,16 +1,19 @@
 #include "Entity.h"
 
-Entity::Entity()
+namespace DemoEngine_Entities
 {
+	Entity::Entity()
+	{
 
-}
+	}
 
-Entity::~Entity()
-{
+	Entity::~Entity()
+	{
 
-}
+	}
 
-void Entity::Draw()
-{
+	void Entity::Draw()
+	{
 
+	}
 }

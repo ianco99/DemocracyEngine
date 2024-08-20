@@ -1,12 +1,22 @@
-#include <iostream>
 #include "Renderer.h"
+#include "glew.h"
 #include "glfw3.h"
+#include <iostream>
 
 namespace DemoEngine_Renderer
 {
 	Renderer::Renderer()
 	{
-		std::cout << "Renderer successfully created." << std::endl;
+		GLenum result = glewInit();
+
+		if (result == GLEW_OK)
+		{
+			std::cout << "Renderer successfully created." << std::endl;
+		}
+		else
+		{
+			std::cout << "[RENDERER] Glew initialization error" << std::endl;
+		}
 	}
 
 	Renderer::~Renderer()
@@ -16,6 +26,16 @@ namespace DemoEngine_Renderer
 
 	void Renderer::RenderFrame()
 	{
+		unsigned int VBO;
+
+		float vertices[] = {
+	-0.5f, -0.5f, 0.0f,
+	 0.5f, -0.5f, 0.0f,
+	 0.0f,  0.5f, 0.0f
+		};
+
+		glGenBuffers(1, &VBO);
+
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT);
 

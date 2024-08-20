@@ -11,15 +11,5 @@ namespace DemoEngine_Entities
 		Entity2D();
 		~Entity2D();
 	};
-
-	Entity2D::Entity2D()
-	{
-
-	}
-
-	Entity2D::~Entity2D()
-	{
-
-	}
 }
 
