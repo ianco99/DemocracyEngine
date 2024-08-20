@@ -2,9 +2,11 @@
 
 namespace DemoEngine_Entities
 {
+	
+
 	Entity::Entity()
 	{
-
+		
 	}
 
 	Entity::~Entity()

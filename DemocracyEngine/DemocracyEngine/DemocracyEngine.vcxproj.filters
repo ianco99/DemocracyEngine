@@ -39,6 +39,9 @@
     <ClCompile Include="src\Entities\Entity.cpp">
       <Filter>Src\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entities\Triangle.cpp">
+      <Filter>Src\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseGame\BaseGame.h">
@@ -57,6 +60,9 @@
       <Filter>Src\Entities</Filter>
     </ClInclude>
     <ClInclude Include="src\Entities\Shape.h">
+      <Filter>Src\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\Triangle.h">
       <Filter>Src\Entities</Filter>
     </ClInclude>
   </ItemGroup>

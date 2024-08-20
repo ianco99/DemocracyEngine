@@ -10,8 +10,6 @@ namespace DemoEngine_BaseGame
 	{
 		window = new Window(1024, 720, "Democracy Engine");
 		renderer = new Renderer();
-
-
 	}
 
 	BaseGame::~BaseGame()

@@ -5,7 +5,9 @@ namespace DemoEngine_Entities
 {
 	class Entity2D : Entity
 	{
-	private:
+	protected:
+		unsigned int VBO;
+
 
 	public:
 		Entity2D();

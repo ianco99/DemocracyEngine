@@ -2,7 +2,9 @@
 
 namespace DemoEngine_Renderer
 {
-	class Renderer
+	
+
+	static class Renderer
 	{
 	private:
 
@@ -10,7 +12,13 @@ namespace DemoEngine_Renderer
 		Renderer();
 		~Renderer();
 
+		static Renderer* GetRender();
+		static Renderer* RendererInstance;
+
 		void RenderFrame();
 		void Update();
+
+		void CreateShape(unsigned int& VBO, float vertex[]);
+		void DrawShape();
 	};
 }
