@@ -1,5 +1,10 @@
 #pragma once
-class Shape
-{
-};
+#include "Entity2D.h"
 
+namespace DemoEngine_Entities
+{
+	class Shape : Entity2D
+	{
+
+	};
+}
