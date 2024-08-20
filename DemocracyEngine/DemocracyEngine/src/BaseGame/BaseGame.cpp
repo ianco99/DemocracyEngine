@@ -32,9 +32,7 @@ namespace DemoEngine_BaseGame
 		{
 			renderer->Update();
 
-			window->SwapBuffers();
-
-			window->PollEvents();
+			window->Update();
 		}
 	}
 

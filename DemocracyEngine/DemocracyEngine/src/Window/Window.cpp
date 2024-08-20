@@ -42,6 +42,12 @@ namespace DemoEngine_Window
 		std::cout << "Deleted window." << std::endl;
 	}
 
+	void Window::Update()
+	{
+		SwapBuffers();
+		PollEvents();
+	}
+
 	bool Window::ShouldClose()
 	{
 		return glfwWindowShouldClose(glfwWindow);

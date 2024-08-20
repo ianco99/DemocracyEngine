@@ -11,6 +11,8 @@ namespace DemoEngine_Window
 
 		void InitWindow();
 		void TerminateWindow();
+		void PollEvents();
+		void SwapBuffers();
 
 	public:
 		Window(float width, float height, const char* windowTitle);
@@ -19,8 +21,7 @@ namespace DemoEngine_Window
 		bool ShouldClose();
 		bool GetIsCreated();
 		GLFWwindow* GetGLFWwindow();
-		void SwapBuffers();
-		void PollEvents();
+		void Update();
 
 	};
 }
