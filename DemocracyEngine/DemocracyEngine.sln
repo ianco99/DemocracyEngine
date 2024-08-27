@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DemocracyEngine", "DemocracyEngine\DemocracyEngine.vcxproj", "{52CCE46E-260F-4213-82C6-313190859074}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestEarth", "TestEarth\TestEarth.vcxproj", "{81056D0B-39C4-43A5-B1BB-93E839E6DE5B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{52CCE46E-260F-4213-82C6-313190859074} = {52CCE46E-260F-4213-82C6-313190859074}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -20,6 +20,6 @@ namespace DemoEngine_Entities
 
 	void Triangle::Draw() 
 	{
-
+		Renderer::GetRender()->DrawShape();
 	}
 }
