@@ -17,4 +17,9 @@ namespace DemoEngine_Entities
 	{
 
 	}
+
+	void Triangle::Draw() 
+	{
+
+	}
 }

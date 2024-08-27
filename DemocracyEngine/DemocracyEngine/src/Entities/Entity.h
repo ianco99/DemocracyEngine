@@ -5,6 +5,7 @@ using namespace DemoEngine_Renderer;
 
 namespace DemoEngine_Entities
 {
+    //make abstract class
     class Entity
     {
     private:
@@ -12,6 +13,6 @@ namespace DemoEngine_Entities
     public:
         Entity();
         ~Entity();
-        void Draw();
+        virtual void Draw();
     };
 }

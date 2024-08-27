@@ -10,5 +10,8 @@ namespace DemoEngine_Entities
 	public:
 		Triangle();
 		~Triangle();
+
+
+		void Draw() override;
 	};
 }

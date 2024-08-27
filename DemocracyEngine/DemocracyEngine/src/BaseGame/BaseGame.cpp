@@ -25,6 +25,7 @@ namespace DemoEngine_BaseGame
 		return window->GetIsCreated();
 	}
 
+	//This method will be virtual
 	void BaseGame::Update()
 	{
 		DemoEngine_Entities::Triangle* triangle =  new DemoEngine_Entities::Triangle();
