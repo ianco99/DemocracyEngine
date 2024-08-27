@@ -1,5 +1,7 @@
 #include "BaseGame.h"
 
+#include "../Entities/Triangle.h"
+
 using namespace DemoEngine_Window;
 using namespace DemoEngine_Renderer;
 
@@ -25,11 +27,12 @@ namespace DemoEngine_BaseGame
 
 	void BaseGame::Update()
 	{
+		DemoEngine_Entities::Triangle* triangle =  new DemoEngine_Entities::Triangle();
 		/* Loop until the user closes the window */
 		while (!window->ShouldClose())
 		{
 			renderer->Update();
-
+			triangle->Draw();
 			window->Update();
 		}
 	}

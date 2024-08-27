@@ -5,13 +5,13 @@ using namespace DemoEngine_Renderer;
 
 namespace DemoEngine_Entities
 {
-	class Entity
-	{
-	private:
+    class Entity
+    {
+    private:
 
-	public:
-		Entity();
-		~Entity();
-		void Draw();
-	};
+    public:
+        Entity();
+        ~Entity();
+        void Draw();
+    };
 }

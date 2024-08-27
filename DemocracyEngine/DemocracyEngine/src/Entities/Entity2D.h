@@ -3,15 +3,13 @@
 
 namespace DemoEngine_Entities
 {
-	class Entity2D : Entity
-	{
-	protected:
-		unsigned int VBO;
+    class Entity2D : public  Entity
+    {
+    protected:
+        unsigned int VBO = 0;
 
-
-	public:
-		Entity2D();
-		~Entity2D();
-	};
+    public:
+        Entity2D();
+        ~Entity2D();
+    };
 }
-

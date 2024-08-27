@@ -2,8 +2,6 @@
 
 namespace DemoEngine_Entities
 {
-	
-
 	Entity::Entity()
 	{
 		

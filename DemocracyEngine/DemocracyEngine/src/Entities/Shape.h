@@ -3,7 +3,7 @@
 
 namespace DemoEngine_Entities
 {
-	class Shape : Entity2D
+	class Shape : public Entity2D
 	{
 	private:
 
