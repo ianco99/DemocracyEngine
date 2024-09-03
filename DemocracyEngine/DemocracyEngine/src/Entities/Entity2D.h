@@ -7,6 +7,7 @@ namespace DemoEngine_Entities
     {
     protected:
         unsigned int VBO = 0;
+        unsigned int VAO = 0;
 
     public:
         Entity2D();
