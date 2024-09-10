@@ -4,22 +4,29 @@ namespace DemoEngine_Entities
 {
 	Triangle::Triangle() : Shape()
 	{
+		int vertexSize = 9;
 		float vertex[] = {
-			-0.5f, -0.5f, 0,
-			 0.5f, -0.5f, 0,
-			 0.0f,  0.5f, 0
+			//position              color
+			-0.5f, -0.5f, 0.0f,		//1.0f, 0.0f, 0.0f, //botton right
+			 0.5f, -0.5f, 0.0f,		//0.0f, 1.0f, 0.0f, //botton left
+			 0.0f,  0.5f, 0.0f,		//0.0f, 0.0f, 1.0f  //top
 		};
 
-		Renderer::GetRender()->CreateShape(VBO , vertex);
+		int indexSize = 3;
+		int indices[] = {
+		0, 1, 3
+		};
+
+		Renderer::GetRender()->CreateShape(VBO, VAO, EBO, vertex, indices, vertexSize, indexSize);
 	}
 
 	Triangle::~Triangle()
 	{
-
+		Renderer::GetRender()->DestroyShape(VBO, VAO, EBO);
 	}
 
-	void Triangle::Draw() 
+	void Triangle::Draw()
 	{
-		Renderer::GetRender()->DrawShape();
+		Renderer::GetRender()->DrawShape(VAO);
 	}
 }

@@ -22,23 +22,26 @@ namespace DemoEngine_Renderer
 		glAttachShader(program, vs);
 		glAttachShader(program, fs);
 		glLinkProgram(program);
+
 		glValidateProgram(program);
 
 		glDeleteShader(vs);
 		glDeleteShader(fs);
 
+		std::cout << "Created shader." << std::endl;
 		return program;
 	}
 
 	unsigned int Shader::CompileShader(unsigned int type, const string& source)
 	{
-		unsigned int id = glCreateShader(GL_VERTEX_SHADER);
+		unsigned int id = glCreateShader(type);
 		const char* src = source.c_str();
 		glShaderSource(id, 1, &src, nullptr);
 		glCompileShader(id);
 
 		int result;
 		glGetShaderiv(id, GL_COMPILE_STATUS, &result);
+
 		if (result == GL_FALSE)
 		{
 			int lenght;
@@ -51,7 +54,6 @@ namespace DemoEngine_Renderer
 
 			return 0;
 		}
-
 		return id;
 	}
 
