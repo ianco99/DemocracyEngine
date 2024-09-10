@@ -4,12 +4,12 @@ namespace DemoEngine_Entities
 {
 	Triangle::Triangle() : Shape()
 	{
-		int vertexSize = 9;
+		int vertexSize = 18;
 		float vertex[] = {
-			//position              color
-			 0.0f,  0.5f, 0.0f,		//0.0f, 0.0f, 1.0f  //top
-			-0.5f, -0.5f, 0.0f,		//1.0f, 0.0f, 0.0f, //botton right
-			 0.5f, -0.5f, 0.0f,		//0.0f, 1.0f, 0.0f, //botton left
+			// positions         // colors
+			 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
+			-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
+			 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top
 		};
 
 		int indexSize = 3;
