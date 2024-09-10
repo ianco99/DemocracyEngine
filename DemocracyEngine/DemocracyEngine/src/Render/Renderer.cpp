@@ -51,6 +51,8 @@ namespace DemoEngine_Renderer
     {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        glUseProgram(shader);
+
     }
 
     void Renderer::CreateShape(unsigned int& VBO, unsigned int& VAO, unsigned int& EBO, float* positions, int* indexs, int positionsSize, int indexSize)
@@ -85,7 +87,6 @@ namespace DemoEngine_Renderer
 
     void Renderer::DrawShape(unsigned int& VAO)
     {
-        glUseProgram(shader);
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
     }

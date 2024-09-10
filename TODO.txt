@@ -1,0 +1,3 @@
+Hacer que el shader se lea desde un lector de txt
+exportar a dll 
+transformaciones
