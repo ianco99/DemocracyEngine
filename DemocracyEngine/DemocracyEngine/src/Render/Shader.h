@@ -10,6 +10,7 @@ namespace DemoEngine_Renderer
 	public:
 		Shader();
 		~Shader();
+		string ReadShaderFile(string FileLocation);
 		unsigned int CreateShader(const string& vertexShader, const string& fragmentShader);
 		unsigned int CompileShader(unsigned int type, const string& source);
 
