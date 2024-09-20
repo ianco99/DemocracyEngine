@@ -1,88 +1,93 @@
-#include <iostream>
-#include "glfw3.h"
 #include "Window.h"
 
 namespace DemoEngine_Window
 {
-	Window::Window(float width, float height, const char* windowTitle)
-	{
-		/* Initialize the library */
-		if (!glfwInit())
-		{
-			isCreated = false;
-		}
-		else
-		{
-			/* Create a windowed mode window and its OpenGL context */
-			glfwWindow = glfwCreateWindow(width, height, windowTitle, NULL, NULL);
+    Window* Window::WindowInstance = nullptr;
 
-			if (!glfwWindow)
-			{
-				glfwTerminate();
-				isCreated = false;
+    Window::Window(float width, float height, const char* windowTitle)
+    {
+        WindowInstance = this;
 
-				//TODO: CREAR DEBUG MANAGER PARA TENER DEBUGS DE COLORES Y CON FORMATEOS Y FONTS Y FONT SIZE Y COSO
-				//besos enzito
-				std::cout << "Window creation could not be completed." << std::endl;
-			}
-			else
-			{
-				isCreated = true;
+        this->width = width;
+        this->height = height;
+        
+        /* Initialize the library */
+        if (!glfwInit())
+        {
+            isCreated = false;
+        }
+        else
+        {
+            /* Create a windowed mode window and its OpenGL context */
+            glfwWindow = glfwCreateWindow(width, height, windowTitle, NULL, NULL);
 
-				InitWindow();
+            if (!glfwWindow)
+            {
+                glfwTerminate();
+                isCreated = false;
 
-				std::cout << "Window has been successfully created." << std::endl;
-			}
-		}
-	}
+                //TODO: CREAR DEBUG MANAGER PARA TENER DEBUGS DE COLORES Y CON FORMATEOS Y FONTS Y FONT SIZE Y COSO
+                //besos enzito
+                std::cout << "Window creation could not be completed." << std::endl;
+            }
+            else
+            {
+                isCreated = true;
 
-	Window::~Window()
-	{
-		TerminateWindow();
-		std::cout << "Deleted window." << std::endl;
-	}
+                InitWindow();
 
-	void Window::Update()
-	{
-		SwapBuffers();
-		PollEvents();
-	}
+                std::cout << "Window has been successfully created." << std::endl;
+            }
+        }
+    }
 
-	bool Window::ShouldClose()
-	{
-		return glfwWindowShouldClose(glfwWindow);
-	}
+    Window::~Window()
+    {
+        TerminateWindow();
+        std::cout << "Deleted window." << std::endl;
+    }
 
-	void Window::InitWindow()
-	{
-		/* Make the window's context current */
-		glfwMakeContextCurrent(glfwWindow);
-	}
+    void Window::Update()
+    {
+        SwapBuffers();
+        PollEvents();
+    }
 
-	void Window::SwapBuffers()
-	{
-		/* Swap front and back buffers */
-		glfwSwapBuffers(glfwWindow);
-	}
+    bool Window::ShouldClose()
+    {
+        return glfwWindowShouldClose(glfwWindow);
+    }
 
-	void Window::PollEvents()
-	{
-		/* Poll for and process events */
-		glfwPollEvents();
-	}
+    void Window::InitWindow()
+    {
+        /* Make the window's context current */
+        glfwMakeContextCurrent(glfwWindow);
+    }
 
-	bool Window::GetIsCreated()
-	{
-		return isCreated;
-	}
+    void Window::SwapBuffers()
+    {
+        /* Swap front and back buffers */
+        glfwSwapBuffers(glfwWindow);
+    }
 
-	GLFWwindow* Window::GetGLFWwindow()
-	{
-		return glfwWindow;
-	}
+    void Window::PollEvents()
+    {
+        /* Poll for and process events */
+        glfwPollEvents();
+    }
 
-	void Window::TerminateWindow()
-	{
-		glfwTerminate();
-	}
+    bool Window::GetIsCreated()
+    {
+        return isCreated;
+    }
+
+    GLFWwindow* Window::GetGLFWwindow()
+    {
+        return glfwWindow;
+    }
+
+    void Window::TerminateWindow()
+    {
+        glfwTerminate();
+    }
 }

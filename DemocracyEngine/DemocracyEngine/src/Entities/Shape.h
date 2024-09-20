@@ -8,7 +8,7 @@ namespace DemoEngine_Entities
 	private:
 
 	public:
-		Shape();
+		Shape(vec3 newPosition, vec3 newRotation, vec3 newScale);
 		~Shape();
 		void InitShape();
 	};

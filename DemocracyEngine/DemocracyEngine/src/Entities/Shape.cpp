@@ -2,7 +2,7 @@
 
 namespace DemoEngine_Entities
 {
-	Shape::Shape() : Entity2D()
+	Shape::Shape(vec3 newPosition, vec3 newRotation, vec3 newScale): Entity2D(newPosition, newRotation, newScale)
 	{
 
 	}

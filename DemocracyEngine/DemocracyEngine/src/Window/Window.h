@@ -1,5 +1,6 @@
 #pragma once
 #include "glfw3.h"
+#include <iostream>
 
 namespace DemoEngine_Window
 {
@@ -15,8 +16,14 @@ namespace DemoEngine_Window
 		void SwapBuffers();
 
 	public:
+		float width;
+		float height;
+		
 		Window(float width, float height, const char* windowTitle);
 		~Window();
+
+		static Window* GetWindow();
+		static Window* WindowInstance;
 		
 		bool ShouldClose();
 		bool GetIsCreated();

@@ -1,8 +1,4 @@
 #include "Renderer.h"
-#include "Shader.h"
-#include "glew.h"
-#include "glfw3.h"
-#include <iostream>
 
 namespace DemoEngine_Renderer
 {
@@ -32,6 +28,10 @@ namespace DemoEngine_Renderer
 		glUseProgram(shader);
 		delete a;
 
+
+		proyection = ortho(0.0f, 1024.0f, 0.0f, 720.0f, 0.1f, 100.0f);
+		vec3 cameraPosition = vec3(0, 0, 1);
+		view = lookAt(cameraPosition, { 0,0,0 }, { 0,1,0 });
 	}
 
 	Renderer::~Renderer()
@@ -81,11 +81,21 @@ namespace DemoEngine_Renderer
 		std::cout << "Delete Shape." << std::endl;
 	}
 
-	void Renderer::DrawShape(unsigned int& VAO)
+	void Renderer::DrawShape(unsigned int& VAO, mat4x4 model, vec4 color, int sizeIndex)
 	{
-
+		glUseProgram(shader);
+		
+		unsigned int transformLoc = glGetUniformLocation(shader, "u_MVP");
+		mat4 MVP = proyection * view * model;
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, value_ptr(MVP));
+		
 		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+		
+		int location = glGetUniformLocation(shader, "u_Color");
+		glUniform4f(location, color.x, color.y, color.z, color.w);
+		
+		glDrawElements(GL_TRIANGLES, sizeIndex, GL_UNSIGNED_INT, 0);
+		glUseProgram(0);
 	}
 
 	Renderer* Renderer::GetRender()

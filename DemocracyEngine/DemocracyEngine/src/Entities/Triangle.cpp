@@ -2,9 +2,9 @@
 
 namespace DemoEngine_Entities
 {
-	Triangle::Triangle() : Shape()
+	Triangle::Triangle(vec3 newPosition, vec3 newRotation, vec3 newScale): Shape(newPosition, newRotation, newScale)
 	{
-		int vertexSize = 18;
+		vertexSize = 18;
 		float vertex[] = {
 			// positions         // colors
 			 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
@@ -12,7 +12,7 @@ namespace DemoEngine_Entities
 			 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top
 		};
 
-		int indexSize = 3;
+		indexSize = 3;
 		int indices[] = {
 		0, 1, 2
 		};
@@ -27,6 +27,6 @@ namespace DemoEngine_Entities
 
 	void Triangle::Draw()
 	{
-		Renderer::GetRender()->DrawShape(VAO);
+		Renderer::GetRender()->DrawShape(VAO, model, color, indexSize);
 	}
 }
