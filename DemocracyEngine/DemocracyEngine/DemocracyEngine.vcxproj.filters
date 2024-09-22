@@ -45,6 +45,9 @@
     <ClCompile Include="src\Render\Shader.cpp">
       <Filter>Src\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entities\Square.cpp">
+      <Filter>Src\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseGame\BaseGame.h">
@@ -70,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="src\Render\Shader.h">
       <Filter>Src\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\Square.h">
+      <Filter>Src\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
