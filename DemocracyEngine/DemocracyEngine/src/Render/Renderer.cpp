@@ -30,7 +30,7 @@ namespace DemoEngine_Renderer
 
 
 		proyection = ortho(0.0f, 1024.0f, 0.0f, 720.0f, 0.1f, 100.0f);
-		vec3 cameraPosition = vec3(0, 0, 1);
+		vec3 cameraPosition = vec3(0, 0, 50);
 		view = lookAt(cameraPosition, { 0,0,0 }, { 0,1,0 });
 	}
 
