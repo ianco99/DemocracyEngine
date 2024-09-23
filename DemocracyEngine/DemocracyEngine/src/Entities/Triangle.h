@@ -3,7 +3,7 @@
 
 namespace DemoEngine_Entities
 {
-	class Triangle : public Shape
+	class EXPORT Triangle : public Shape
 	{
 	private:
 
