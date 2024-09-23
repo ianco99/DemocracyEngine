@@ -12,6 +12,8 @@ namespace DemoEngine_BaseGame
     {
         window = new Window(1024, 720, "Democracy Engine");
         renderer = new Renderer();
+
+        Init();
     }
 
     BaseGame::~BaseGame()
@@ -20,35 +22,32 @@ namespace DemoEngine_BaseGame
         delete window;
     }
 
-    bool BaseGame::Init()
+    void BaseGame::EngineLoop()
     {
-        return window->GetIsCreated();
-    }
-
-    //This method will be virtual
-    void BaseGame::Update()
-    {
-        vec3 position = vec3{1024 / 2, 720 / 2, 0};
-        vec3 scale = vec3{200, 200, 1};
-        vec3 rotation = vec3{0, 0, 0};
-        vec4 color = vec4{0, 1, 1, 1};
-
-        //DemoEngine_Entities::Triangle* triangle = new DemoEngine_Entities::Triangle(position, rotation, scale);
-        //triangle->setColor(color);
-        DemoEngine_Entities::Square* square =  new DemoEngine_Entities::Square(position, rotation, scale);
-        square->setColor(color);
         
         while (!window->ShouldClose())
         {
             renderer->Update();
 
-            //triangle->setRotationZ(rotation.z + 1);
-            //triangle->Draw();
-
-            square->setRotationZ(rotation.z + 1);
-            square->Draw();
+            Update();
 
             window->Update();
         }
+        DeInit();
+    }
+
+    void BaseGame::Init()
+    {
+        
+    }
+
+    void BaseGame::Update()
+    {
+
+    }
+
+    void BaseGame::DeInit()
+    {
+
     }
 }

@@ -19,8 +19,10 @@ namespace DemoEngine_BaseGame
 		BaseGame();
 		~BaseGame();
 
-		bool Init();
-		void Update();
-
+		virtual void Init();
+		virtual void Update();
+		virtual void DeInit();
+		//possible virtual Draw method in which all draw methods must be called
+		void EngineLoop();
 	};
 }

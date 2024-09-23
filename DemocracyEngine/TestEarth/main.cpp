@@ -1,16 +1,14 @@
-#include "BaseGame/BaseGame.h"
-
+#include "EarthGame.h"
 using namespace DemoEngine_BaseGame;
 
 int main()
 {
-    BaseGame* baseGame = new BaseGame();
+    EarthGame* earthGame = new EarthGame();
 
-    baseGame->Init();
+    earthGame->Init();
+    earthGame->EngineLoop();
 
-    baseGame->Update();
-
-    delete baseGame;
+    delete earthGame;
 
     return 0;
 }

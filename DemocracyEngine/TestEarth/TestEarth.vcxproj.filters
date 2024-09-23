@@ -9,5 +9,13 @@
     <ClCompile Include="main.cpp">
       <Filter>Src</Filter>
     </ClCompile>
+    <ClCompile Include="EarthGame.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EarthGame.h">
+      <Filter>Src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
