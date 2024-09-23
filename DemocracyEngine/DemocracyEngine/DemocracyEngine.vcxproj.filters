@@ -16,6 +16,9 @@
     <Filter Include="Src\Entities">
       <UniqueIdentifier>{b088e679-391e-473d-87c0-8846acd89ff0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Utilities">
+      <UniqueIdentifier>{a69ba3e8-6b97-457f-94f1-cec4d1615132}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -76,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="src\Entities\Square.h">
       <Filter>Src\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tools\Export.h">
+      <Filter>Src\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../Tools/Export.h"
 #include <iostream>
 #include "Shader.h"
 #include "glew.h"
@@ -17,7 +18,7 @@ using namespace DemoEngine_Window;
 namespace DemoEngine_Renderer
 {
 	
-	static class Renderer
+	static class EXPORT Renderer
 	{
 	private:
 		unsigned int shader;

@@ -3,7 +3,7 @@
 
 namespace DemoEngine_Entities
 {
-    class Entity2D : public  Entity
+    class EXPORT Entity2D : public Entity
     {
     protected:
         vec4 color;

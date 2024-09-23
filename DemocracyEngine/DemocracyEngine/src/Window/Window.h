@@ -1,10 +1,11 @@
 #pragma once
 #include "glfw3.h"
+#include "../Tools/Export.h"
 #include <iostream>
 
 namespace DemoEngine_Window
 {
-	class Window
+	class EXPORT Window
 	{
 	private:
 		GLFWwindow* glfwWindow;

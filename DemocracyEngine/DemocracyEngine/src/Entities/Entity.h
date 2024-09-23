@@ -6,7 +6,7 @@ using namespace DemoEngine_Renderer;
 namespace DemoEngine_Entities
 {
     //make abstract class
-    class Entity
+    class EXPORT Entity
     {
     protected:
         mat4x4 model;

@@ -1,11 +1,12 @@
 #pragma once
 #include <iostream>
+#include "../Tools/Export.h"
 
 using namespace std;
 
 namespace DemoEngine_Renderer
 {
-	class Shader
+	class EXPORT Shader
 	{
 	public:
 		Shader();
