@@ -12,34 +12,36 @@ EarthGame::~EarthGame()
 
 void EarthGame::Init()
 {
-	Sposition = vec3{ 1024 / 2, 720 / 2, 0 };
-	Sscale = vec3{ 200, 200, 1 };
-	Srotation = vec3{ 0, 0, 0 };
-	Scolor = vec4{ 0, 1, 1, 1 };
+	Aposition = vec3{ 100, 720, 0 };
+	Ascale = vec3{ 200, 200, 1 };
+	Arotation = vec3{ 0, 0, 0 };
+	Acolor = vec4{ 1, 1, 0, 1 };
 
-	Tposition = vec3{ 1024 / 4, 720 / 4, 0 };
-	Tscale = vec3{ 200, 100, 1 };
-	Trotation = vec3{ 0, 0, 0 };
-	Tcolor = vec4{ 0, 0, 1, 1 };
+	Bposition = vec3{ 1024-100, 0, 0 };
+	Bscale = vec3{ 200, 200, 1 };
+	Brotation = vec3{ 0, 0, 0 };
+	Bcolor = vec4{ 1, 0, 1, 1 };
 
-	square = new DemoEngine_Entities::Square(Sposition, Srotation, Sscale);
-	square->setColor(Scolor);
+	Atriangle = new DemoEngine_Entities::Triangle(Aposition, Arotation, Ascale);
+	Atriangle->setColor(Acolor);
 
-	triangle = new DemoEngine_Entities::Triangle(Tposition, Trotation, Tscale);
-	triangle->setColor(Tcolor);
+	Btriangle = new DemoEngine_Entities::Triangle(Bposition, Brotation, Bscale);
+	Btriangle->setColor(Bcolor);
 }
 
 void EarthGame::Update()
 {
-	square->rotateZ(1);
-	square->Draw();
+	Atriangle->rotateZ(-1);
+	Atriangle->Translate(vec3(0,-1,0));
+	Atriangle->Draw();
 
-	triangle->Translate(vec3(1,0,0));
-	triangle->Draw();
+	Btriangle->rotateZ(1);
+	Btriangle->Translate(vec3(0, 1, 0));
+	Btriangle->Draw();
 }
 
 void EarthGame::DeInit()
 {
-	delete triangle;
-	delete square;
+	delete Atriangle;
+	delete Btriangle;
 }
