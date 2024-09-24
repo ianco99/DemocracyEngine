@@ -31,11 +31,11 @@ void EarthGame::Init()
 
 void EarthGame::Update()
 {
-	Atriangle->rotateZ(-1);
+	Atriangle->rotateZ(1);
 	Atriangle->Translate(vec3(0,-1,0));
 	Atriangle->Draw();
 
-	Btriangle->rotateZ(1);
+	Btriangle->rotateZ(-1);
 	Btriangle->Translate(vec3(0, 1, 0));
 	Btriangle->Draw();
 }
