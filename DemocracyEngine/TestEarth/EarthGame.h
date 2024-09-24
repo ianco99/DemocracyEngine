@@ -7,12 +7,19 @@ using namespace DemoEngine_BaseGame;
 class EarthGame final : public BaseGame
 {
 private:
-	vec3 position;
-	vec3 scale;
-	vec3 rotation;
-	vec4 color;
+	vec3 Sposition;
+	vec3 Sscale;
+	vec3 Srotation;
+	vec4 Scolor;
+
+	vec3 Tposition;
+	vec3 Tscale;
+	vec3 Trotation;
+	vec4 Tcolor;
 
 	DemoEngine_Entities::Square* square;
+
+	DemoEngine_Entities::Triangle* triangle;
 
 public:
 	EarthGame();

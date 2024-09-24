@@ -4,6 +4,10 @@ namespace DemoEngine_Entities
 {
 	Entity::Entity(vec3 newPosition, vec3 newRotation, vec3 newScale)
 	{
+		this->LocalPosition = newPosition;
+		this->LocalRotation = newRotation;
+		this->LocalScale = newScale;
+
 		model = mat4(1);
 		position = mat4(1);
 		scale = mat4(1);
@@ -14,7 +18,7 @@ namespace DemoEngine_Entities
 		setRotationX(0);
 		setRotationY(0);
 		setRotationZ(0);
-		setScale({1,1,1});
+		setScale({ 1,1,1 });
 
 		setRotationX(newRotation.x);
 		setRotationY(newRotation.y);
@@ -34,12 +38,16 @@ namespace DemoEngine_Entities
 
 	}
 
-	
+
 	void Entity::setPosition(vec3 newPosition)
 	{
-		position = mat4(1.0);
-		vec3 newPositionSet = { newPosition.x, newPosition.y, newPosition.z };
-		position = translate(position, newPositionSet);
+		LocalPosition = newPosition;
+		UpdateTMatrix();
+	}
+
+	void Entity::Translate(glm::vec3 dir)
+	{
+		LocalPosition += dir;
 		UpdateTMatrix();
 	}
 
@@ -50,8 +58,7 @@ namespace DemoEngine_Entities
 
 	void Entity::setScale(vec3 newScale)
 	{
-		scale = mat4(1.0f);
-		scale = glm::scale(scale, vec3(newScale.x, newScale.y, 1));
+		LocalScale = newScale;
 		UpdateTMatrix();
 	}
 
@@ -60,26 +67,69 @@ namespace DemoEngine_Entities
 		return { scale[0][0], scale[1][1], scale[2][2] };
 	}
 
+	void Entity::Scale(glm::vec3 increment)
+	{
+		LocalScale += increment;
+		UpdateTMatrix();
+	}
+
 	void Entity::setRotationX(float newRotationX)
 	{
-		rotation = glm::rotate(rotation, radians(newRotationX), vec3(1, 0, 0));
+		LocalRotation.x = newRotationX;
 		UpdateTMatrix();
 	}
 
 	void Entity::setRotationY(float newRotationY)
 	{
-		rotation = glm::rotate(rotation, radians(newRotationY), vec3(0, 1, 0));
+		LocalRotation.y = newRotationY;
 		UpdateTMatrix();
 	}
 
 	void Entity::setRotationZ(float newRotationZ)
 	{
-		rotation = glm::rotate(rotation, radians(newRotationZ), vec3(0, 0, 1));
+		LocalRotation.z = newRotationZ;
+		UpdateTMatrix();
+	}
+
+	vec3 Entity::GetRotation()
+	{
+		return LocalRotation;
+	}
+
+	void Entity::rotateX(float incrementRotation)
+	{
+		LocalRotation.x += incrementRotation;
+		UpdateTMatrix();
+	}
+
+	void Entity::rotateY(float incrementRotation)
+	{
+		LocalRotation.y += incrementRotation;
+		UpdateTMatrix();
+	}
+
+	void Entity::rotateZ(float incrementRotation)
+	{
+		LocalRotation.z += incrementRotation;
 		UpdateTMatrix();
 	}
 
 	void Entity::UpdateTMatrix()
 	{
+		position = mat4(1.0);
+		vec3 newPositionSet = { LocalPosition.x, LocalPosition.y, LocalPosition.z };
+		position = translate(position, newPositionSet);
+
+		mat4 rotationX = glm::rotate(mat4(1.0), radians(LocalRotation.x), vec3(1, 0, 0));
+		mat4 rotationY = glm::rotate(mat4(1.0), radians(LocalRotation.y), vec3(0, 1, 0));
+		mat4 rotationZ = glm::rotate(mat4(1.0), radians(LocalRotation.z), vec3(0, 0, 1));
+
+		rotation = rotationY * rotationX * rotationZ;
+
+
+		scale = mat4(1.0f);
+		scale = glm::scale(scale, vec3(LocalScale.x, LocalScale.y, LocalScale.z));
+
 		model = position * rotation * scale;
 	}
 }
