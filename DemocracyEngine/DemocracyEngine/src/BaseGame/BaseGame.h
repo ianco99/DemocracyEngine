@@ -3,9 +3,11 @@
 #include "../src/Tools/Export.h"
 #include "../Render/Renderer.h"
 #include "../Window/Window.h"
+#include "../Input/Input.h"
 
 using namespace DemoEngine_Window;
 using namespace DemoEngine_Renderer;
+using namespace DemoEngine_Input;
 
 namespace DemoEngine_BaseGame
 {
@@ -14,6 +16,9 @@ namespace DemoEngine_BaseGame
 	private:
 		Window* window;
 		Renderer* renderer;
+
+	protected:
+		Input* input;
 
 	public:
 		BaseGame();

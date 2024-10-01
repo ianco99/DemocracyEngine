@@ -19,6 +19,9 @@
     <Filter Include="Src\Utilities">
       <UniqueIdentifier>{a69ba3e8-6b97-457f-94f1-cec4d1615132}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Input">
+      <UniqueIdentifier>{5960ce84-e2b0-48cd-8464-cb0ff172c987}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -51,6 +54,9 @@
     <ClCompile Include="src\Entities\Square.cpp">
       <Filter>Src\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="src\Input\Input.cpp">
+      <Filter>Src\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseGame\BaseGame.h">
@@ -82,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="src\Tools\Export.h">
       <Filter>Src\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\Input.h">
+      <Filter>Src\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

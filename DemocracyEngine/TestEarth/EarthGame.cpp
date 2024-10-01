@@ -31,10 +31,14 @@ void EarthGame::Init()
 
 void EarthGame::Update()
 {
-	square->rotateZ(1);
+	if (input->IsKeyPressed(GLFW_KEY_E))
+		square->rotateZ(1);
+
+	if(input->IsKeyReleased(GLFW_KEY_A))
+		triangle->Translate(vec3(1, 0, 0));
+
 	square->Draw();
 
-	triangle->Translate(vec3(1,0,0));
 	triangle->Draw();
 }
 

@@ -12,6 +12,7 @@ namespace DemoEngine_BaseGame
     {
         window = new Window(1024, 720, "Democracy Engine");
         renderer = new Renderer();
+        input = new Input(window);
 
         Init();
     }
@@ -20,6 +21,7 @@ namespace DemoEngine_BaseGame
     {
         delete renderer;
         delete window;
+        delete input;
     }
 
     void BaseGame::EngineLoop()
