@@ -1,4 +1,5 @@
 #include "BaseGame/BaseGame.h"
+#include "Entities/Sprite.h"
 #include "Entities/Triangle.h"
 #include "Entities/Square.h"
 
@@ -20,6 +21,8 @@ private:
 	DemoEngine_Entities::Square* square;
 
 	DemoEngine_Entities::Triangle* triangle;
+
+	DemoEngine_Entities::Sprite* image;
 
 public:
 	EarthGame();

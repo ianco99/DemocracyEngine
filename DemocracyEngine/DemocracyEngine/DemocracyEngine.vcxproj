@@ -23,12 +23,15 @@
     <ClCompile Include="src\Entities\Entity.cpp" />
     <ClCompile Include="src\Entities\Entity2D.cpp" />
     <ClCompile Include="src\Entities\Shape.cpp" />
+    <ClCompile Include="src\Entities\Sprite.cpp" />
     <ClCompile Include="src\Entities\Square.cpp" />
     <ClCompile Include="src\Entities\Triangle.cpp" />
     <ClCompile Include="src\Input\Input.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Render\Renderer.cpp" />
     <ClCompile Include="src\Render\Shader.cpp" />
+    <ClCompile Include="src\Tools\stb_image.cpp" />
+    <ClCompile Include="src\Tools\TextureImporter.cpp" />
     <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -36,12 +39,15 @@
     <ClInclude Include="src\Entities\Entity.h" />
     <ClInclude Include="src\Entities\Entity2D.h" />
     <ClInclude Include="src\Entities\Shape.h" />
+    <ClInclude Include="src\Entities\Sprite.h" />
     <ClInclude Include="src\Entities\Square.h" />
     <ClInclude Include="src\Entities\Triangle.h" />
     <ClInclude Include="src\Input\Input.h" />
     <ClInclude Include="src\Render\Renderer.h" />
     <ClInclude Include="src\Render\Shader.h" />
     <ClInclude Include="src\Tools\Export.h" />
+    <ClInclude Include="src\Tools\stb_image.h" />
+    <ClInclude Include="src\Tools\TextureImporter.h" />
     <ClInclude Include="src\Window\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

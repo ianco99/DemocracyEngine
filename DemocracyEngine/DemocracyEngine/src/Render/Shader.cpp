@@ -14,23 +14,54 @@ namespace DemoEngine_Renderer
     {
     }
 
-    string Shader::ReadShaderFile(string FileLocation)
+    unsigned int Shader::InitShader(string fileLocation)
     {
-        ifstream file(FileLocation);
+        ifstream stream(fileLocation);
 
-        if (!file.is_open())
+        if (!stream.is_open())
         {
-            cout << "Error, File shader with route: " + FileLocation + " doesn't exist " << endl;
-            return " ";
+            cout << "Error, File shader with route: " + fileLocation + " doesn't exist " << endl;
         }
         else
         {
-            cout << "File shader with route: " + FileLocation + " finded " << endl;
+            cout << "File shader with route: " + fileLocation + " finded " << endl;
+        }
+        
+        enum class ShaderType
+        {
+            NONE = -1, VERTEX = 0, FRAGMENT = 1
+        };
+
+        string line;
+
+        stringstream _stringstream[2];
+
+        ShaderType type = ShaderType::NONE;
+
+        while (getline(stream, line))
+        {
+            if (line.find("#shader") != string::npos)
+            {
+                if (line.find("vertex") != string::npos)
+                {
+                    type = ShaderType::VERTEX;
+                }
+
+                else if (line.find("fragment") != string::npos)
+                {
+                    type = ShaderType::FRAGMENT;
+                }
+            }
+
+            else
+            {
+                _stringstream[(int)type] << line << '\n';
+            }
+
         }
 
-        stringstream buffer;
-        buffer << file.rdbuf();
-        return buffer.str();
+        unsigned int value = CreateShader(_stringstream[0].str(), _stringstream[1].str());
+        return value;
     }
 
     unsigned int Shader::CreateShader(const string& vertexShader, const string& fragmentShader)
