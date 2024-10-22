@@ -27,7 +27,6 @@
     <ClCompile Include="src\Entities\Square.cpp" />
     <ClCompile Include="src\Entities\Triangle.cpp" />
     <ClCompile Include="src\Input\Input.cpp" />
-    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Render\Renderer.cpp" />
     <ClCompile Include="src\Render\Shader.cpp" />
     <ClCompile Include="src\Tools\stb_image.cpp" />

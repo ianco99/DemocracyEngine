@@ -10,6 +10,5 @@ namespace DemoEngine_Entities
 	public:
 		Shape(vec3 newPosition, vec3 newRotation, vec3 newScale);
 		~Shape();
-		void InitShape();
 	};
 }

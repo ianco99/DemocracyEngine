@@ -24,9 +24,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
     <ClCompile Include="src\BaseGame\BaseGame.cpp">
       <Filter>Src\BaseGame</Filter>
     </ClCompile>
@@ -56,6 +53,15 @@
     </ClCompile>
     <ClCompile Include="src\Input\Input.cpp">
       <Filter>Src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\Sprite.cpp">
+      <Filter>Src\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tools\stb_image.cpp">
+      <Filter>Src\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tools\TextureImporter.cpp">
+      <Filter>Src\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +97,15 @@
     </ClInclude>
     <ClInclude Include="src\Input\Input.h">
       <Filter>Src\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\Sprite.h">
+      <Filter>Src\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tools\stb_image.h">
+      <Filter>Src\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tools\TextureImporter.h">
+      <Filter>Src\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
