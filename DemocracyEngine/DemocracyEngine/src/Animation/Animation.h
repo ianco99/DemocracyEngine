@@ -1,8 +1,7 @@
-#include <vector>
 #include "../Tools/Export.h"
 #include "Frame.h"
 #include "../Tools/DemoTimer.h"
-
+#include <vector>
 
 namespace DemoEngine_Animations
 {
@@ -14,7 +13,8 @@ namespace DemoEngine_Animations
 		float length;
 
 		
-		//vector<Frame> frames;
+		
+		std::vector<Frame> frames;
 
 	public:
 		Animation();
@@ -30,7 +30,7 @@ namespace DemoEngine_Animations
 
 
 		int GetCurrentFrame();
-		//vector<Frame>& GetFrames();
+		std::vector<Frame>& GetFrames();
 	};
 }
 

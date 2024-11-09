@@ -10,14 +10,11 @@ namespace DemoEngine_Animations
 
 	class EXPORT Frame
 	{
-	private:
-		UVCoords uvCoords[4];
-
 	public:
 		Frame();
 		~Frame();
 
-		UVCoords* GetUVCoords();
+		UVCoords uvCoords[4];
 	};
 }
 

@@ -11,9 +11,4 @@ namespace DemoEngine_Animations
 	{
 
 	}
-
-	UVCoords* Frame::GetUVCoords()
-	{
-		return &uvCoords[0];
-	}
 }

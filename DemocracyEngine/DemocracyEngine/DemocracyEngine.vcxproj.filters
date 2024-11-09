@@ -72,6 +72,9 @@
     <ClCompile Include="src\Animation\Frame.cpp">
       <Filter>Src\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tools\DemoTimer.cpp">
+      <Filter>Src\Utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseGame\BaseGame.h">
@@ -121,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="src\Animation\Frame.h">
       <Filter>Src\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tools\DemoTimer.h">
+      <Filter>Src\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

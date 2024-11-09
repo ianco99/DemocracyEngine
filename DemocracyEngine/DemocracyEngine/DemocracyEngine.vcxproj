@@ -31,6 +31,7 @@
     <ClCompile Include="src\Input\Input.cpp" />
     <ClCompile Include="src\Render\Renderer.cpp" />
     <ClCompile Include="src\Render\Shader.cpp" />
+    <ClCompile Include="src\Tools\DemoTimer.cpp" />
     <ClCompile Include="src\Tools\stb_image.cpp" />
     <ClCompile Include="src\Tools\TextureImporter.cpp" />
     <ClCompile Include="src\Window\Window.cpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="src\Input\Input.h" />
     <ClInclude Include="src\Render\Renderer.h" />
     <ClInclude Include="src\Render\Shader.h" />
+    <ClInclude Include="src\Tools\DemoTimer.h" />
     <ClInclude Include="src\Tools\Export.h" />
     <ClInclude Include="src\Tools\stb_image.h" />
     <ClInclude Include="src\Tools\TextureImporter.h" />
