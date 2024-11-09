@@ -1,4 +1,5 @@
 #pragma once
+#include "../Tools/Export.h"
 #include "stb_image.h"
 #include <string>
 
@@ -6,7 +7,7 @@ using namespace std;
 
 namespace DemoEngine_Tools
 {
-    class TextureImporter
+    class EXPORT TextureImporter
     {
     private:
 

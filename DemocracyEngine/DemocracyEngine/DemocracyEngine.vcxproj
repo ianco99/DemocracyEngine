@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Animation\Animation.cpp" />
+    <ClCompile Include="src\Animation\Frame.cpp" />
     <ClCompile Include="src\BaseGame\BaseGame.cpp" />
     <ClCompile Include="src\Entities\Entity.cpp" />
     <ClCompile Include="src\Entities\Entity2D.cpp" />
@@ -31,9 +33,12 @@
     <ClCompile Include="src\Render\Shader.cpp" />
     <ClCompile Include="src\Tools\stb_image.cpp" />
     <ClCompile Include="src\Tools\TextureImporter.cpp" />
+    <ClCompile Include="src\Tools\Timer.cpp" />
     <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Animation\Animation.h" />
+    <ClInclude Include="src\Animation\Frame.h" />
     <ClInclude Include="src\BaseGame\BaseGame.h" />
     <ClInclude Include="src\Entities\Entity.h" />
     <ClInclude Include="src\Entities\Entity2D.h" />
@@ -47,6 +52,7 @@
     <ClInclude Include="src\Tools\Export.h" />
     <ClInclude Include="src\Tools\stb_image.h" />
     <ClInclude Include="src\Tools\TextureImporter.h" />
+    <ClInclude Include="src\Tools\Timer.h" />
     <ClInclude Include="src\Window\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

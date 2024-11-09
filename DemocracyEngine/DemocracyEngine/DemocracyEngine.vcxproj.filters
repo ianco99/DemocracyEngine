@@ -22,6 +22,9 @@
     <Filter Include="Src\Input">
       <UniqueIdentifier>{5960ce84-e2b0-48cd-8464-cb0ff172c987}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Animation">
+      <UniqueIdentifier>{68e0fad2-b788-489a-9c15-714d1d0dee91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\BaseGame\BaseGame.cpp">
@@ -62,6 +65,15 @@
     </ClCompile>
     <ClCompile Include="src\Tools\TextureImporter.cpp">
       <Filter>Src\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tools\Timer.cpp">
+      <Filter>Src\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Animation\Animation.cpp">
+      <Filter>Src\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Animation\Frame.cpp">
+      <Filter>Src\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +118,15 @@
     </ClInclude>
     <ClInclude Include="src\Tools\TextureImporter.h">
       <Filter>Src\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tools\Timer.h">
+      <Filter>Src\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Animation\Animation.h">
+      <Filter>Src\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Animation\Frame.h">
+      <Filter>Src\Animation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
