@@ -3,7 +3,9 @@
 #include "Entities/Triangle.h"
 #include "Entities/Square.h"
 
+
 using namespace DemoEngine_BaseGame;
+using namespace DemoEngine_Entities;
 
 class EarthGame final : public BaseGame
 {
@@ -18,11 +20,13 @@ private:
 	vec3 Trotation;
 	vec4 Tcolor;
 
-	DemoEngine_Entities::Square* square;
+	Square* square;
 
-	DemoEngine_Entities::Triangle* triangle;
+	Triangle* triangle;
 
-	DemoEngine_Entities::Sprite* image;
+	Sprite* image;
+
+	DemoEngine_Animations::DemoTimer* timer;
 
 public:
 	EarthGame();

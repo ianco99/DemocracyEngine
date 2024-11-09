@@ -30,6 +30,8 @@ void EarthGame::Init()
 
 	const char* path = "rsc/democracy.png";
 	image = new DemoEngine_Entities::Sprite(path, 1024,730, Scolor, Sposition, Sscale, Srotation);
+
+	timer = new DemoEngine_Animations::DemoTimer();
 }
 
 void EarthGame::Update()
@@ -41,6 +43,8 @@ void EarthGame::Update()
 		triangle->Translate(vec3(1, 0, 0));
 
 	square->Draw();
+
+	image->Update(timer);
 
 	triangle->Draw();
 

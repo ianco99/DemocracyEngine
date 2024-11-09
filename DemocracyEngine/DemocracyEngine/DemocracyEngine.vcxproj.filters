@@ -66,9 +66,6 @@
     <ClCompile Include="src\Tools\TextureImporter.cpp">
       <Filter>Src\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tools\Timer.cpp">
-      <Filter>Src\Utilities</Filter>
-    </ClCompile>
     <ClCompile Include="src\Animation\Animation.cpp">
       <Filter>Src\Animation</Filter>
     </ClCompile>
@@ -117,9 +114,6 @@
       <Filter>Src\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="src\Tools\TextureImporter.h">
-      <Filter>Src\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tools\Timer.h">
       <Filter>Src\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="src\Animation\Animation.h">

@@ -1,5 +1,4 @@
 #include "Animation.h"
-#include "../Tools/Timer.h"
 
 namespace DemoEngine_Animations
 {
@@ -13,9 +12,16 @@ namespace DemoEngine_Animations
 
 	}
 
-	void Animation::Update()
+	void Animation::Update(DemoTimer* timer)
 	{
+		//currentTime += DemoTimer::GetDeltaTime();
 		
+		while (currentTime > length)
+		{
+			currentTime -= length;
+		}
+
+		//float frameLength = length / fram
 	}
 
 	void Animation::AddFrame(float frameX, float frameY, float frameWidth,
@@ -30,4 +36,14 @@ namespace DemoEngine_Animations
 	{
 
 	}
+
+	int Animation::GetCurrentFrame()
+	{
+		return currentFrame;
+	}
+
+	//vector<Frame> Animation::GetFrames()
+	//{
+	//	return frames;
+	//}
 }

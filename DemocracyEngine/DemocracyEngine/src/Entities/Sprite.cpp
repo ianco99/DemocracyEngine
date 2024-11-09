@@ -30,6 +30,23 @@ namespace DemoEngine_Entities
 
     Sprite::~Sprite()
     {
+
+    }
+
+    void Sprite::Update(DemoTimer* timer)
+    {
+        if(animation != nullptr)
+        {
+            animation->Update(timer);
+
+            //currentFrame = animation.Get
+        }
+        else
+        {
+            
+            cout << "WARNING: Update being called on a sprite without animation" << endl;
+        }
+
     }
 
     void Sprite::Draw()

@@ -33,7 +33,6 @@
     <ClCompile Include="src\Render\Shader.cpp" />
     <ClCompile Include="src\Tools\stb_image.cpp" />
     <ClCompile Include="src\Tools\TextureImporter.cpp" />
-    <ClCompile Include="src\Tools\Timer.cpp" />
     <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -52,7 +51,6 @@
     <ClInclude Include="src\Tools\Export.h" />
     <ClInclude Include="src\Tools\stb_image.h" />
     <ClInclude Include="src\Tools\TextureImporter.h" />
-    <ClInclude Include="src\Tools\Timer.h" />
     <ClInclude Include="src\Window\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

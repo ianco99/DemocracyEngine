@@ -1,4 +1,8 @@
+#include <vector>
 #include "../Tools/Export.h"
+#include "Frame.h"
+#include "../Tools/DemoTimer.h"
+
 
 namespace DemoEngine_Animations
 {
@@ -9,11 +13,14 @@ namespace DemoEngine_Animations
 		float currentTime;
 		float length;
 
+		
+		//vector<Frame> frames;
+
 	public:
 		Animation();
 		~Animation();
 
-		void Update();
+		void Update(DemoTimer* timer);
 		void AddFrame(float frameX, float frameY, float frameWidth, 
 						float frameHeight, float textureWidth, float textureHeight, float durationInSecs);
 
@@ -21,8 +28,9 @@ namespace DemoEngine_Animations
 						float frameHeight, float textureWidth, float textureHeight, float durationInSecs, 
 						int frameCount);
 
-		//int currentFrame();
-		//vector<Frame>& getFrames();
+
+		int GetCurrentFrame();
+		//vector<Frame>& GetFrames();
 	};
 }
 
