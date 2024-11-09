@@ -1,14 +1,17 @@
 #include <glfw3.h>
 
-class Timer
+namespace DemoEngine_Animations
 {
-private:
-	static float deltaTime;
-	static double lastDeltaTime;
+	class Timer
+	{
+	private:
+		static float deltaTime;
+		static double lastDeltaTime;
 
-public:
-	Timer();
-	~Timer();
-	static void Update(float currentTime);
-	static float GetDeltaTime();
-};
+	public:
+		Timer();
+		~Timer();
+		static void Update(float currentTime);
+		static float GetDeltaTime();
+	};
+}

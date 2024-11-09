@@ -1,4 +1,5 @@
 #include "Animation.h"
+#include "../Tools/Timer.h"
 
 namespace DemoEngine_Animations
 {
@@ -14,6 +15,19 @@ namespace DemoEngine_Animations
 
 	void Animation::Update()
 	{
-		//currentTime = 
+		
+	}
+
+	void Animation::AddFrame(float frameX, float frameY, float frameWidth,
+		float frameHeight, float textureWidth, float textureHeight, float durationInSecs)
+	{
+
+	}
+
+	void Animation::AddFrame(float frameX, float frameY, float frameWidth,
+		float frameHeight, float textureWidth, float textureHeight, float durationInSecs,
+		int frameCount)
+	{
+
 	}
 }

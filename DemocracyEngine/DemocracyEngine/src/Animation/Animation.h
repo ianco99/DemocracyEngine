@@ -17,7 +17,7 @@ namespace DemoEngine_Animations
 		void AddFrame(float frameX, float frameY, float frameWidth, 
 						float frameHeight, float textureWidth, float textureHeight, float durationInSecs);
 
-		void addFrame(float frameX, float frameY, float frameWidth,
+		void AddFrame(float frameX, float frameY, float frameWidth,
 						float frameHeight, float textureWidth, float textureHeight, float durationInSecs, 
 						int frameCount);
 
