@@ -80,7 +80,6 @@ namespace DemoEngine_Entities
 	void Sprite::AddAnimation(Animation* animation)
 	{
 		this->animation = animation;
-		SetUV(animation->GetFrames()[currentFrame]);
 		previousFrame = std::numeric_limits<unsigned int>::max_digits10;
 	}
 

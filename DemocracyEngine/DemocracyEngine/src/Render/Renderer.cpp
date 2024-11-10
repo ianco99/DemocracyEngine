@@ -22,7 +22,7 @@ namespace DemoEngine_Renderer
 		Shader* a = new Shader();
 		primitiveShader = a->InitShader("rsc/PrimitiveShader.DemoShader");
 		textureShader = a->InitShader("rsc/TextureShader.DemoShader");
-		
+
 		glEnable(GL_DEPTH);
 		glDepthFunc(GL_LESS);
 
@@ -35,7 +35,7 @@ namespace DemoEngine_Renderer
 		glEnable(GL_ALPHA);
 
 		delete a;
-		
+
 		proyection = ortho(0.0f, 1024.0f, 0.0f, 720.0f, 0.1f, 100.0f);
 		vec3 cameraPosition = vec3(0, 0, 50);
 		view = lookAt(cameraPosition, { 0,0,0 }, { 0,1,0 });
@@ -94,7 +94,7 @@ namespace DemoEngine_Renderer
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(float) * indexSize, indexs, GL_STATIC_DRAW);
-		
+
 		// position attribute
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
@@ -127,14 +127,21 @@ namespace DemoEngine_Renderer
 		std::cout << m_BPP << endl;
 		std::cout << width << endl;
 		std::cout << height << endl;
+
+
 		if (m_BPP == 4)
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, localBuffer);
 		else if (m_BPP == 3)
+		{
+			glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, localBuffer);
+			glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+		}
 		else if (m_BPP == 2)
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RG, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, localBuffer);
 		else if (m_BPP == 1)
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_R, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, localBuffer);
+
 
 		if (!localBuffer)
 		{
@@ -157,16 +164,16 @@ namespace DemoEngine_Renderer
 	void Renderer::DrawShape(unsigned int& VAO, mat4x4 model, vec4 color, int sizeIndex)
 	{
 		glUseProgram(primitiveShader);
-		
+
 		unsigned int transformLoc = glGetUniformLocation(primitiveShader, "u_MVP");
 		mat4 MVP = proyection * view * model;
 		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, value_ptr(MVP));
-		
+
 		glBindVertexArray(VAO);
-		
+
 		int location = glGetUniformLocation(primitiveShader, "u_Color");
 		glUniform4f(location, color.x, color.y, color.z, color.w);
-		
+
 		glDrawElements(GL_TRIANGLES, sizeIndex, GL_UNSIGNED_INT, 0);
 		glUseProgram(0);
 	}
