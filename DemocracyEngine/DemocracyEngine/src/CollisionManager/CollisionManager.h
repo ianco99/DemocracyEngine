@@ -14,6 +14,6 @@ namespace DemoEngine_Collisions
 		CollisionManager();
 		~CollisionManager();
 
-		static bool CheckCollisionRecRec(Entity2D* entityOne, Entity2D* entityTwo);
+		static bool CheckCollisionRecRec(Entity2D entityOne, Entity2D entityTwo);
 	};
 }

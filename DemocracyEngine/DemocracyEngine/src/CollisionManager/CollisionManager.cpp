@@ -12,19 +12,25 @@ namespace DemoEngine_Collisions
 
 	}
 
-	bool CollisionManager::CheckCollisionRecRec(Entity2D* entityOne, Entity2D* entityTwo)
+	bool CollisionManager::CheckCollisionRecRec(Entity2D a, Entity2D b)
 	{
-		bool collisionX = entityOne->getPosition().x + entityOne->getScale().x >= entityTwo->getPosition().x &&
-						  entityTwo->getPosition().x + entityTwo->getScale().x >= entityOne->getPosition().x;
+		float aRight = a.getPosition().x + glm::abs(a.getScale().x) / 2;
+		float bLeftSide = b.getPosition().x - glm::abs(b.getScale().x) / 2;
+		float aLeftSide = a.getPosition().x - glm::abs(a.getScale().x) / 2;
+		float bRightSide = b.getPosition().x + glm::abs(b.getScale().x) / 2;
+		// collision x-axis?
+		bool collisionX = aRight >= bLeftSide &&
+			bRightSide >= aLeftSide;
 
-		bool collisionY = entityOne->getPosition().y + entityOne->getScale().y >= entityTwo->getPosition().y &&
-						  entityTwo->getPosition().y + entityTwo->getScale().y >= entityOne->getPosition().y;
 
-		if (collisionX && collisionY)
-		{
-			cout << "Sprite :" << entityOne->getScale().x << ", " << entityOne->getScale().y << endl;
-			cout << "Box :" << entityTwo->getScale().x << ", " << entityTwo->getScale().y << endl;
-		}
+		float aUpSide = a.getPosition().y + glm::abs(a.getScale().y) / 2;
+		float bDownSide = b.getPosition().y - glm::abs(b.getScale().y) / 2;
+		float bUpSide = b.getPosition().y + glm::abs(b.getScale().y) / 2;
+		float aDownSide = a.getPosition().y - glm::abs(a.getScale().y) / 2;
+		// collision y-axis?
+		bool collisionY = aUpSide >= bDownSide &&
+			bUpSide >= aDownSide;
+
 
 		return collisionX && collisionY;
 	}
