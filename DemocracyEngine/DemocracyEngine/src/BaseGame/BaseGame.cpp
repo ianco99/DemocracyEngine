@@ -2,9 +2,11 @@
 
 #include "../Entities/Triangle.h"
 #include "../Entities/Square.h"
+#include "../Tools/DemoTimer.h"
 
 using namespace DemoEngine_Window;
 using namespace DemoEngine_Renderer;
+using namespace DemoEngine_Animations;
 
 namespace DemoEngine_BaseGame
 {
@@ -29,6 +31,7 @@ namespace DemoEngine_BaseGame
         
         while (!window->ShouldClose())
         {
+            DemoTimer::Update(glfwGetTime());
             renderer->Update();
 
             Update();

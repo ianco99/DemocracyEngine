@@ -22,7 +22,9 @@ namespace DemoEngine_Entities
         Sprite(const char* textureName, int width, int height, vec4 rgba, vec3 newPosition, vec3 newScale, vec3 newRotation);
         ~Sprite();
 
-        void AddAnimation(Animation animation);
+        void SetUV(Frame frame);
+
+        void AddAnimation(Animation* animation);
         void Update(DemoTimer* timer);
 
         void Draw() override;

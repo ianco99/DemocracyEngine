@@ -24,6 +24,7 @@ private:
 
 	Triangle* triangle;
 
+	Animation* anim;
 	Sprite* image;
 
 	DemoEngine_Animations::DemoTimer* timer;
