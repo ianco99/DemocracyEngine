@@ -11,10 +11,10 @@ namespace DemoEngine_Entities
 		vertexSize = 36;
 		float vertex[] = {
 			// positions		    // colors					// texture coords
-			0.5f, 0.5f, 0.0f,       1.0f, 1.0f, 1.0f, 1.0f,     1.0f, 1.0f,   // top right
-			0.5f, -0.5f, 0.0f,      1.0f, 1.0f, 1.0f, 1.0f,	    1.0f, 0.0f,   // bottom right
-			-0.5f, -0.5f, 0.0f,     1.0f, 1.0f, 1.0f, 1.0f,	    0.0f, 0.0f,   // bottom left
-			-0.5f, 0.5f, 0.0f,      1.0f, 1.0f, 1.0f, 1.0f,	    0.0f, 1.0f    // top left 
+			0.5f, 0.5f, 0.0f,       1.0f, 1.0f, 1.0f, 0.0f,     1.0f, 1.0f,   // top right
+			0.5f, -0.5f, 0.0f,      1.0f, 1.0f, 1.0f, 0.0f,	    1.0f, 0.0f,   // bottom right
+			-0.5f, -0.5f, 0.0f,     1.0f, 1.0f, 1.0f, 0.0f,	    0.0f, 0.0f,   // bottom left
+			-0.5f, 0.5f, 0.0f,      1.0f, 1.0f, 1.0f, 0.0f,	    0.0f, 1.0f    // top left 
 		};
 
 		indexSize = 6;
@@ -80,6 +80,7 @@ namespace DemoEngine_Entities
 	void Sprite::AddAnimation(Animation* animation)
 	{
 		this->animation = animation;
+		SetUV(animation->GetFrames()[currentFrame]);
 		previousFrame = std::numeric_limits<unsigned int>::max_digits10;
 	}
 

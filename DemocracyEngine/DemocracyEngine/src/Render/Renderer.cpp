@@ -23,6 +23,17 @@ namespace DemoEngine_Renderer
 		primitiveShader = a->InitShader("rsc/PrimitiveShader.DemoShader");
 		textureShader = a->InitShader("rsc/TextureShader.DemoShader");
 		
+		glEnable(GL_DEPTH);
+		glDepthFunc(GL_LESS);
+
+		glEnable(GL_SAMPLE_ALPHA_TO_COVERAGE);
+		glEnable(GL_SAMPLE_ALPHA_TO_ONE);
+		glFrontFace(GL_CCW);
+		glEnable(GL_BLEND); //Transparency
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		//glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_ALPHA);
+
 		delete a;
 		
 		proyection = ortho(0.0f, 1024.0f, 0.0f, 720.0f, 0.1f, 100.0f);
@@ -113,8 +124,11 @@ namespace DemoEngine_Renderer
 		int width, height, m_BPP;
 		unsigned char* localBuffer = textureImporter.GetTexture(textureName, width, height, m_BPP);
 
+		std::cout << m_BPP << endl;
+		std::cout << width << endl;
+		std::cout << height << endl;
 		if (m_BPP == 4)
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, localBuffer);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, localBuffer);
 		else if (m_BPP == 3)
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, localBuffer);
 		else if (m_BPP == 2)
