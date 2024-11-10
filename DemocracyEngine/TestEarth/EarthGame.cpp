@@ -13,12 +13,12 @@ EarthGame::~EarthGame()
 void EarthGame::Init()
 {
 	Sposition = vec3{ 1024 / 2, 720 / 2, 0 };
-	Sscale = vec3{ 300, 400, 1 };
+	Sscale = vec3{ 100, 100, 1 };
 	Srotation = vec3{ 0, 0, 0 };
 	Scolor = vec4{ 1, 1, 1, 1 };
 
 	Tposition = vec3{ 1024 / 4, 720 / 4, 0 };
-	Tscale = vec3{ 200, 100, 1 };
+	Tscale = vec3{ 100, 100, 1 };
 	Trotation = vec3{ 0, 0, 0 };
 	Tcolor = vec4{ 0, 0, 1, 1 };
 
@@ -33,8 +33,8 @@ void EarthGame::Init()
 	//image = new DemoEngine_Entities::Sprite(path, 1024, 730, Scolor, Sposition, Sscale, Srotation);
 
 	const char* path = "rsc/demoDie.png";
-	image = new DemoEngine_Entities::Sprite(path, 500, 588, Scolor, Sposition, Sscale, Srotation);
-
+	image = new DemoEngine_Entities::Sprite(path, 100, 100, Scolor, Sposition, Sscale, Srotation);
+	lastPlayerPos = vec3(1024 / 2, 720 / 2, 0);
 	//const char* path = "rsc/Sonic_Mania_Sprite_Sheet.png";
 	//image = new DemoEngine_Entities::Sprite(path, 1024, 730, Scolor, Sposition, Sscale, Srotation);
 
@@ -46,15 +46,38 @@ void EarthGame::Init()
 
 void EarthGame::Update()
 {
-	if (input->IsKeyPressed(GLFW_KEY_E))
-		square->rotateZ(1);
+	if (input->IsKeyPressed(GLFW_KEY_S))
+	{
+		image->Translate(vec3(0, -1, 0));
+	}
+	else if (input->IsKeyPressed(GLFW_KEY_W))
+	{
+		image->Translate(vec3(0, 1, 0));
+	}
+	else if (input->IsKeyPressed(GLFW_KEY_A))
+	{
+		image->Translate(vec3(-1, 0, 0));
+	}
+	else if (input->IsKeyPressed(GLFW_KEY_D))
+	{
+		image->Translate(vec3(1, 0, 0));
+	}
 
-	if(input->IsKeyReleased(GLFW_KEY_A))
+	if (input->IsKeyReleased(GLFW_KEY_SPACE))
 		triangle->Translate(vec3(1, 0, 0));
 
 	//square->Draw();
 
 	image->Update(timer);
+
+	if (CollisionManager::CheckCollisionRecRec(image, triangle))
+	{
+		image->setPosition(lastPlayerPos);
+	}
+	else
+	{
+		lastPlayerPos = image->getPosition();
+	}
 
 	triangle->Draw();
 

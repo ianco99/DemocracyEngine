@@ -22,6 +22,7 @@
     <ClCompile Include="src\Animation\Animation.cpp" />
     <ClCompile Include="src\Animation\Frame.cpp" />
     <ClCompile Include="src\BaseGame\BaseGame.cpp" />
+    <ClCompile Include="src\CollisionManager\CollisionManager.cpp" />
     <ClCompile Include="src\Entities\Entity.cpp" />
     <ClCompile Include="src\Entities\Entity2D.cpp" />
     <ClCompile Include="src\Entities\Shape.cpp" />
@@ -40,6 +41,7 @@
     <ClInclude Include="src\Animation\Animation.h" />
     <ClInclude Include="src\Animation\Frame.h" />
     <ClInclude Include="src\BaseGame\BaseGame.h" />
+    <ClInclude Include="src\CollisionManager\CollisionManager.h" />
     <ClInclude Include="src\Entities\Entity.h" />
     <ClInclude Include="src\Entities\Entity2D.h" />
     <ClInclude Include="src\Entities\Shape.h" />

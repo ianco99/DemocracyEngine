@@ -25,6 +25,9 @@
     <Filter Include="Src\Animation">
       <UniqueIdentifier>{68e0fad2-b788-489a-9c15-714d1d0dee91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\CollisionManager">
+      <UniqueIdentifier>{c12a0544-e677-435b-8dc9-e953ada01fdd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\BaseGame\BaseGame.cpp">
@@ -74,6 +77,9 @@
     </ClCompile>
     <ClCompile Include="src\Tools\DemoTimer.cpp">
       <Filter>Src\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CollisionManager\CollisionManager.cpp">
+      <Filter>Src\CollisionManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="src\Tools\DemoTimer.h">
       <Filter>Src\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CollisionManager\CollisionManager.h">
+      <Filter>Src\CollisionManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
