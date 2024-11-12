@@ -12,35 +12,43 @@ EarthGame::~EarthGame()
 
 void EarthGame::Init()
 {
-	Sposition = vec3{ 1024 / 8, 720 / 8, 0 };
-	Sscale = vec3{ 100, 100, 1 };
-	Srotation = vec3{ 0, 0, 0 };
-	Scolor = vec4{ 1, 1, 1, 1 };
+	Kposition = vec3{ 1024 / 2, 720 / 2, 0 };
+	Kscale = vec3{ 150, 150, 1 };
+	Krotation = vec3{ 0, 0, 0 };
+	Kcolor = vec4{ 1, 1, 1, 1 };
 
-	Tposition = vec3{ 1024 / 4, 720 / 4, 0 };
-	Tscale = vec3{ 100, 200, 1 };
-	Trotation = vec3{ 0, 0, 0 };
-	Tcolor = vec4{ 0, 0, 1, 1 };
+	Rposition = vec3{ 1024 / 2 + 1024 / 4, 720 / 2, 0 };
+	Rscale = vec3{ 200, 200, 1 };
+	Rrotation = vec3{ 0, 0, 0 };
+	Rcolor = vec4{ 0, 0, 1, 1 };
 
 	timer = new DemoEngine_Animations::DemoTimer();
-	square = new DemoEngine_Entities::Square(Sposition, Srotation, Sscale);
-	square->setColor(Scolor);
 
-	triangle = new DemoEngine_Entities::Triangle(Tposition, Trotation, Tscale);
-	triangle->setColor(Tcolor);
 
-	//const char* path = "rsc/democracy.png";
-	//image = new DemoEngine_Entities::Sprite(path, 1024, 730, Scolor, Sposition, Sscale, Srotation);
-
-	const char* path = "rsc/demoDie.png";
-	image = new DemoEngine_Entities::Sprite(path, 100, 200, Scolor, Sposition, Tscale, Srotation);
+	const char* path = "rsc/Knuckles_Sprite_Sheet.png";
+	Knuckles = new DemoEngine_Entities::Sprite(path, 646, 473, Kcolor, Kposition, Kscale, Krotation);
 	lastPlayerPos = vec3(1024 / 2, 720 / 2, 0);
-	//const char* path = "rsc/Sonic_Mania_Sprite_Sheet.png";
-	//image = new DemoEngine_Entities::Sprite(path, 1024, 730, Scolor, Sposition, Sscale, Srotation);
 
-	anim = new Animation();
-	anim->AddFrame(0, 0, 639, 588, 26838, 588, 4, 42);
-	image->AddAnimation(anim);
+	path = "rsc/Rock.png";
+	rock = new DemoEngine_Entities::Sprite(path, 244, 207, Rcolor, Rposition, Rscale, Rrotation);
+
+	rockA = new Animation();
+	rockA->AddFrame(75, 207 - 75, 100, 60, 244, 207, 1);
+	rockA->AddFrame(75, 207 - 75, 100, 60, 244, 207, 1);
+
+	rock->AddAnimation(rockA);
+
+	idleAnim = new Animation();
+	idleAnim->AddFrame(-35, 473 - 40, 35, 40, 646, 473, 1, 2);
+
+	walkAnim = new Animation();
+	walkAnim->AddFrame(36, 473 - (40 * 2) - 2, 42, 40, 646, 473, 1, 7);
+
+	spinAttackAnim = new Animation();
+	spinAttackAnim->AddFrame(-31, 473 - (41 * 4), 32, 35, 646, 473, 1, 5);
+
+	pushAnim = new Animation();
+	pushAnim->AddFrame(424, 470 - (43 * 3), 36, 42, 646, 473, 1, 3);
 
 }
 
@@ -48,46 +56,84 @@ void EarthGame::Update()
 {
 	if (input->IsKeyPressed(GLFW_KEY_S))
 	{
-		image->Translate(vec3(0, -1, 0));
+		Knuckles->Translate(vec3(0, -1, 0));
+		if (CollisionManager::CheckCollisionRecRec(*Knuckles, *rock))
+		{
+			rock->Translate(vec3(0, -1, 0));
+			Knuckles->AddAnimation(pushAnim);
+		}
+		else
+		{
+			Knuckles->AddAnimation(walkAnim);
+		}
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_W))
 	{
-		image->Translate(vec3(0, 1, 0));
+		Knuckles->Translate(vec3(0, 1, 0));
+		if (CollisionManager::CheckCollisionRecRec(*Knuckles, *rock))
+		{
+			rock->Translate(vec3(0, 1, 0));
+			Knuckles->AddAnimation(pushAnim);
+		}
+		else
+		{
+			Knuckles->AddAnimation(walkAnim);
+		}
+
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_A))
 	{
-		image->Translate(vec3(-1, 0, 0));
+		Knuckles->Translate(vec3(-1, 0, 0));
+		Knuckles->setRotationY(180);
+		if (CollisionManager::CheckCollisionRecRec(*Knuckles, *rock))
+		{
+			rock->Translate(vec3(-1, 0, 0));
+			Knuckles->AddAnimation(pushAnim);
+		}
+		else
+		{
+			Knuckles->AddAnimation(walkAnim);
+		}
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_D))
 	{
-		image->Translate(vec3(1, 0, 0));
+		Knuckles->Translate(vec3(1, 0, 0));
+		Knuckles->setRotationY(0);
+
+		if (CollisionManager::CheckCollisionRecRec(*Knuckles, *rock))
+		{
+			rock->Translate(vec3(1, 0, 0));
+			Knuckles->AddAnimation(pushAnim);
+		}
+		else
+		{
+			Knuckles->AddAnimation(walkAnim);
+		}
 	}
-
-	if (input->IsKeyReleased(GLFW_KEY_SPACE))
-		triangle->Translate(vec3(1, 0, 0));
-
-	square->Draw();
-
-	image->Update(timer);
-
-	if (CollisionManager::CheckCollisionRecRec(*image, *square))
+	else if (input->IsKeyPressed(GLFW_KEY_SPACE))
 	{
-		image->setPosition(lastPlayerPos);
+		Knuckles->AddAnimation(spinAttackAnim);
 	}
 	else
 	{
-		lastPlayerPos = image->getPosition();
+		Knuckles->AddAnimation(idleAnim);
 	}
 
-	//triangle->Draw();
+	Knuckles->Update(timer);
+	rock->Update(timer);
 
-	image->Draw();
+	Knuckles->Draw();
+	rock->Draw();
 }
 
 void EarthGame::DeInit()
 {
-	delete triangle;
-	delete square;
-	delete image;
-	delete anim;
+	delete Knuckles;
+	delete walkAnim;
+	delete idleAnim;
+	delete spinAttackAnim;
+	delete pushAnim;
+	delete rock;
+	delete rockA;
+	delete timer;
 }

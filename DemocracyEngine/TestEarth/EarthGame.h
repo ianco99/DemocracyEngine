@@ -11,24 +11,27 @@ using namespace DemoEngine_Collisions;
 class EarthGame final : public BaseGame
 {
 private:
-	vec3 Sposition;
-	vec3 Sscale;
-	vec3 Srotation;
-	vec4 Scolor;
+	vec3 Kposition;
+	vec3 Kscale;
+	vec3 Krotation;
+	vec4 Kcolor;
 
-	vec3 Tposition;
-	vec3 Tscale;
-	vec3 Trotation;
-	vec4 Tcolor;
+	vec3 Rposition;
+	vec3 Rscale;
+	vec3 Rrotation;
+	vec4 Rcolor;
 
 	vec3 lastPlayerPos;
 
-	Square* square;
+	Sprite* Knuckles;
+	Animation* walkAnim;
+	Animation* idleAnim;
+	Animation* spinAttackAnim;
+	Animation* pushAnim;
 
-	Triangle* triangle;
+	Sprite* rock;
+	Animation* rockA;
 
-	Animation* anim;
-	Sprite* image;
 
 	DemoEngine_Animations::DemoTimer* timer;
 
