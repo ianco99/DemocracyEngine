@@ -16,23 +16,25 @@ private:
 	vec3 Srotation;
 	vec4 Scolor;
 
-	vec3 Tposition;
-	vec3 Tscale;
-	vec3 Trotation;
-	vec4 Tcolor;
+	vec3 Kposition;
+	vec3 Kscale;
+	vec3 Krotation;
+	vec4 Kcolor;
 
 	vec3 lastPlayerPos;
-
-	Square* square;
-
-	Triangle* triangle;
 
 	Animation* idleAnim;
 	Animation* walkAnim;
 
 	Animation* ballAnim;
 
-	Sprite* image;
+	Animation* rockAnim;
+
+	Animation* rockIdle;
+
+	Sprite* knuckles;
+
+	Sprite* rock;
 
 	DemoEngine_Animations::DemoTimer* timer;
 

@@ -38,12 +38,10 @@ namespace DemoEngine_Entities
 		if (animation != nullptr)
 		{
 			animation->Update(timer);
-			cout << previousFrame << endl;
 
 			currentFrame = animation->GetCurrentFrame();
 			if (currentFrame != previousFrame)
 			{
-				cout << "Changed frame" << endl;
 
 				Frame newFrame = animation->GetFrames()[currentFrame];
 
@@ -56,7 +54,6 @@ namespace DemoEngine_Entities
 		else
 		{
 
-			cout << "WARNING: Update being called on a sprite without animation" << endl;
 		}
 
 	}

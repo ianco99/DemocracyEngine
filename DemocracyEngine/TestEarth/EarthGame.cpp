@@ -12,96 +12,115 @@ EarthGame::~EarthGame()
 
 void EarthGame::Init()
 {
-	Sposition = vec3{ 1024 / 8, 720 / 8, 0 };
-	Sscale = vec3{ 100, 100, 1 };
+	Sposition = vec3{ 1024 - 1024 / 3, 720 / 2, 0 };
+	Sscale = vec3{ 200, 200, 1 };
 	Srotation = vec3{ 0, 0, 0 };
 	Scolor = vec4{ 1, 1, 1, 1 };
 
-	Tposition = vec3{ 1024 / 4, 720 / 4, 0 };
-	Tscale = vec3{ 100, 200, 1 };
-	Trotation = vec3{ 0, 0, 0 };
-	Tcolor = vec4{ 0, 0, 1, 1 };
+	Kposition = vec3{ 1024 / 4, 720 / 4, 0 };
+	Kscale = vec3{ 100, 200, 1 };
+	Krotation = vec3{ 0, 0, 0 };
+	Kcolor = vec4{ 0, 0, 1, 1 };
 
 	timer = new DemoEngine_Animations::DemoTimer();
 
-	square = new DemoEngine_Entities::Square(Sposition, Srotation, Sscale);
-	square->setColor(Scolor);
-
-	triangle = new DemoEngine_Entities::Triangle(Tposition, Trotation, Tscale);
-	triangle->setColor(Tcolor);
-
-	//const char* path = "rsc/democracy.png";
-	//image = new DemoEngine_Entities::Sprite(path, 1024, 730, Scolor, Sposition, Sscale, Srotation);
-
 	const char* path = "rsc/Knuckles_Sprite_Sheet.png";
-	image = new DemoEngine_Entities::Sprite(path, 100, 200, Scolor, Sposition, Tscale, Srotation, true);
-	lastPlayerPos = vec3(1024 / 2, 720 / 2, 0);
-	//const char* path = "rsc/Sonic_Mania_Sprite_Sheet.png";
-	//image = new DemoEngine_Entities::Sprite(path, 1024, 730, Scolor, Sposition, Sscale, Srotation);
+	knuckles = new DemoEngine_Entities::Sprite(path, 100, 200, Kcolor, Kposition, Kscale, Krotation, true);
 
-	idleAnim = new Animation();
-	idleAnim->AddFrame(2, 434, 33, 38, 646, 473,1,1);
+	const char* rockPath = "rsc/Rock.jfif";
+	rock = new DemoEngine_Entities::Sprite(rockPath, Sscale.x, Sscale.y, Scolor, Sposition, Sscale, Srotation, true);
+
+	lastPlayerPos = vec3(1024 / 2, 720 / 2, 0);
+
+	rockIdle = new Animation();
+	rockIdle->AddFrame(74, 130, 83, 57, 244, 207, 1);
+
+	rock->AddAnimation(rockIdle);
 
 	walkAnim = new Animation();
 	walkAnim->AddFrame(339, 388, 33, 38, 646, 473, 1, 3, 9);
-	//walkAnim->AddFrame(379, 388, 33, 38, 646, 473, 1, 1);
-	//walkAnim->AddFrame(459, 388, 33, 38, 646, 473, 1, 1);
+
+	rockAnim = new Animation();
+	rockAnim->AddFrame(426, 342, 32, 35, 646, 473, 1, 4, 3);
+	rockAnim->AddFrame(532, 342, 28, 35, 646, 473, 1, 1);
 
 	ballAnim = new Animation();
 	ballAnim->AddFrame(1, 314, 31, 28, 646, 473, 1, 6, 1);
 
-	image->AddAnimation(idleAnim);
+	idleAnim = new Animation();
+	idleAnim->AddFrame(2, 434, 33, 38, 646, 473, 1, 1);
+
+	knuckles->AddAnimation(idleAnim);
 
 }
 
 void EarthGame::Update()
 {
+	
+
 	if (input->IsKeyPressed(GLFW_KEY_S))
 	{
-		image->Translate(vec3(0, -1, 0));
+		knuckles->Translate(vec3(0, -2, 0));
+		knuckles->AddAnimation(walkAnim);
+
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_W))
 	{
-		image->Translate(vec3(0, 1, 0));
+		knuckles->Translate(vec3(0, 2, 0));
+		knuckles->AddAnimation(walkAnim);
+
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_A))
 	{
-		image->Translate(vec3(-1, 0, 0));
+		knuckles->Translate(vec3(-2, 0, 0));
+		knuckles->setRotationY(-180);
+
+		knuckles->AddAnimation(walkAnim);
+
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_D))
 	{
-		image->Translate(vec3(1, 0, 0));
-		image->AddAnimation(walkAnim);
+		knuckles->setRotationY(1);
+		knuckles->Translate(vec3(2, 0, 0));
+		knuckles->AddAnimation(walkAnim);
+	}
+	else
+	{
+		knuckles->AddAnimation(idleAnim);
+	}
+	if (CollisionManager::CheckCollisionRecRec(*knuckles, *rock))
+	{
+		knuckles->setPosition(lastPlayerPos);
+		knuckles->AddAnimation(rockAnim);
+	}
+	else
+	{
+		lastPlayerPos = knuckles->getPosition();
 	}
 
 	if (input->IsKeyPressed(GLFW_KEY_SPACE))
 	{
-		triangle->Translate(vec3(1, 0, 0));
-		image->AddAnimation(ballAnim);
+		knuckles->AddAnimation(ballAnim);
 	}
 
-	square->Draw();
+	rock->Draw();
 
-	image->Update(timer);
+	knuckles->Update(timer);
 
-	if (CollisionManager::CheckCollisionRecRec(*image, *square))
-	{
-		image->setPosition(lastPlayerPos);
-	}
-	else
-	{
-		lastPlayerPos = image->getPosition();
-	}
+	rock->Update(timer);
 
-	//triangle->Draw();
+	rock->Draw();
 
-	image->Draw();
+	knuckles->Draw();
 }
 
 void EarthGame::DeInit()
 {
-	delete triangle;
-	delete square;
-	delete image;
+	delete rock;
+	delete knuckles;
 	delete idleAnim;
+	delete walkAnim;
+	delete ballAnim;
+	delete rockAnim;
+	delete rockIdle;
 }

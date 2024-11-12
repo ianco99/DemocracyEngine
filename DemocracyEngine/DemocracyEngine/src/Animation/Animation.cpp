@@ -26,7 +26,6 @@ namespace DemoEngine_Animations
 
 		float frameLength = length / frames.size();
 		currentFrame = static_cast<int>(currentTime / frameLength);
-		//std::cout << currentFrame << std::endl;
 	}
 
 	void Animation::AddFrame(float frameX, float frameY, float frameWidth,
