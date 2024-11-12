@@ -12,8 +12,8 @@ namespace DemoEngine_Animations
 		float currentTime;
 		float length;
 
-		
-		
+
+
 		std::vector<Frame> frames;
 
 	public:
@@ -21,15 +21,19 @@ namespace DemoEngine_Animations
 		~Animation();
 
 		void Update(DemoTimer* timer);
-		void AddFrame(float frameX, float frameY, float frameWidth, 
-						float frameHeight, float textureWidth, float textureHeight, float durationInSecs);
+		void AddFrame(float frameX, float frameY, float frameWidth,
+			float frameHeight, float textureWidth, float textureHeight, float durationInSecs);
 
 		void AddFrame(float frameX, float frameY, float frameWidth,
-						float frameHeight, float textureWidth, float textureHeight, float durationInSecs, 
-						int frameCount);
+			float frameHeight, float textureWidth, float textureHeight, float durationInSecs,
+			int frameCount);
+
+		void AddFrame(float xPosition, float yPosition, float frameWidth,
+			float frameHeight, float textureWidth, float textureHeight, float durationInSecs,
+			int frameCount, int marginsBtwnFrames);
 
 
-		int GetCurrentFrame();
+			int GetCurrentFrame();
 		std::vector<Frame>& GetFrames();
 	};
 }

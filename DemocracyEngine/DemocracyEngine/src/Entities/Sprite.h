@@ -19,7 +19,7 @@ namespace DemoEngine_Entities
 
         
     public:
-        Sprite(const char* textureName, int width, int height, vec4 rgba, vec3 newPosition, vec3 newScale, vec3 newRotation);
+        Sprite(const char* textureName, int width, int height, vec4 rgba, vec3 newPosition, vec3 newScale, vec3 newRotation, bool filterModeNearest);
         ~Sprite();
 
         void SetUV(Frame frame);

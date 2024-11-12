@@ -26,7 +26,7 @@ namespace DemoEngine_Animations
 
 		float frameLength = length / frames.size();
 		currentFrame = static_cast<int>(currentTime / frameLength);
-
+		//std::cout << currentFrame << std::endl;
 	}
 
 	void Animation::AddFrame(float frameX, float frameY, float frameWidth,
@@ -77,6 +77,35 @@ namespace DemoEngine_Animations
 
 			frames.push_back(frame);
 			frameXIndex += frameWidth;
+		}
+	}
+
+	void Animation::AddFrame(float xPosition, float yPosition, float frameWidth,
+		float frameHeight, float textureWidth, float textureHeight, float durationInSecs,
+		int frameCount, int marginsBtwnFrames)
+	{
+		length = durationInSecs;
+
+		float frameXIndex = 0;
+
+		for (int i = 0; i < frameCount; i++)
+		{
+			Frame frame;
+
+			frame.uvCoords[0].u = (xPosition + frameXIndex) / textureWidth;
+			frame.uvCoords[0].v = yPosition / textureHeight;
+
+			frame.uvCoords[1].u = (xPosition + frameWidth + frameXIndex) / textureWidth;
+			frame.uvCoords[1].v = yPosition / textureHeight;
+
+			frame.uvCoords[2].u = (xPosition + frameXIndex) / textureWidth;
+			frame.uvCoords[2].v = (yPosition + frameHeight) / textureHeight;
+
+			frame.uvCoords[3].u = (xPosition + frameWidth + frameXIndex) / textureWidth;
+			frame.uvCoords[3].v = (yPosition + frameHeight) / textureHeight;
+
+			frames.push_back(frame);
+			frameXIndex += frameWidth + marginsBtwnFrames;
 		}
 	}
 

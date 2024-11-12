@@ -3,7 +3,7 @@
 namespace DemoEngine_Entities
 {
 	Sprite::Sprite(const char* textureName, int width, int height, vec4 rgba, vec3 newPosition,
-		vec3 newScale, vec3 newRotation) : Entity2D(newPosition, newRotation, newScale)
+		vec3 newScale, vec3 newRotation, bool filterModeNearest) : Entity2D(newPosition, newRotation, newScale)
 	{
 		this->width = width;
 		this->height = height;
@@ -25,7 +25,7 @@ namespace DemoEngine_Entities
 		};
 
 		Renderer::GetRender()->CreateSprite(VBO, VAO, EBO, vertex, indices, vertexSize, indexSize);
-		Renderer::GetRender()->BindTexture(textureName, textureId);
+		Renderer::GetRender()->BindTexture(textureName, textureId, filterModeNearest);
 	}
 
 	Sprite::~Sprite()
@@ -38,15 +38,19 @@ namespace DemoEngine_Entities
 		if (animation != nullptr)
 		{
 			animation->Update(timer);
+			cout << previousFrame << endl;
 
 			currentFrame = animation->GetCurrentFrame();
 			if (currentFrame != previousFrame)
 			{
+				cout << "Changed frame" << endl;
+
 				Frame newFrame = animation->GetFrames()[currentFrame];
 
 				SetUV(newFrame);
 
 				previousFrame = currentFrame;
+
 			}
 		}
 		else
@@ -80,7 +84,7 @@ namespace DemoEngine_Entities
 	void Sprite::AddAnimation(Animation* animation)
 	{
 		this->animation = animation;
-		previousFrame = std::numeric_limits<unsigned int>::max_digits10;
+		//previousFrame = std::numeric_limits<unsigned int>::max_digits10;
 	}
 
 	void Sprite::Draw()

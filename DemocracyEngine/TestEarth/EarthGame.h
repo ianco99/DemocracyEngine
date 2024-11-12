@@ -27,7 +27,11 @@ private:
 
 	Triangle* triangle;
 
-	Animation* anim;
+	Animation* idleAnim;
+	Animation* walkAnim;
+
+	Animation* ballAnim;
+
 	Sprite* image;
 
 	DemoEngine_Animations::DemoTimer* timer;

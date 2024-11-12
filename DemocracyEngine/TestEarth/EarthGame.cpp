@@ -23,6 +23,7 @@ void EarthGame::Init()
 	Tcolor = vec4{ 0, 0, 1, 1 };
 
 	timer = new DemoEngine_Animations::DemoTimer();
+
 	square = new DemoEngine_Entities::Square(Sposition, Srotation, Sscale);
 	square->setColor(Scolor);
 
@@ -32,15 +33,24 @@ void EarthGame::Init()
 	//const char* path = "rsc/democracy.png";
 	//image = new DemoEngine_Entities::Sprite(path, 1024, 730, Scolor, Sposition, Sscale, Srotation);
 
-	const char* path = "rsc/demoDie.png";
-	image = new DemoEngine_Entities::Sprite(path, 100, 200, Scolor, Sposition, Tscale, Srotation);
+	const char* path = "rsc/Knuckles_Sprite_Sheet.png";
+	image = new DemoEngine_Entities::Sprite(path, 100, 200, Scolor, Sposition, Tscale, Srotation, true);
 	lastPlayerPos = vec3(1024 / 2, 720 / 2, 0);
 	//const char* path = "rsc/Sonic_Mania_Sprite_Sheet.png";
 	//image = new DemoEngine_Entities::Sprite(path, 1024, 730, Scolor, Sposition, Sscale, Srotation);
 
-	anim = new Animation();
-	anim->AddFrame(0, 0, 639, 588, 26838, 588, 4, 42);
-	image->AddAnimation(anim);
+	idleAnim = new Animation();
+	idleAnim->AddFrame(2, 434, 33, 38, 646, 473,1,1);
+
+	walkAnim = new Animation();
+	walkAnim->AddFrame(339, 388, 33, 38, 646, 473, 1, 3, 9);
+	//walkAnim->AddFrame(379, 388, 33, 38, 646, 473, 1, 1);
+	//walkAnim->AddFrame(459, 388, 33, 38, 646, 473, 1, 1);
+
+	ballAnim = new Animation();
+	ballAnim->AddFrame(1, 314, 31, 28, 646, 473, 1, 6, 1);
+
+	image->AddAnimation(idleAnim);
 
 }
 
@@ -61,10 +71,14 @@ void EarthGame::Update()
 	else if (input->IsKeyPressed(GLFW_KEY_D))
 	{
 		image->Translate(vec3(1, 0, 0));
+		image->AddAnimation(walkAnim);
 	}
 
-	if (input->IsKeyReleased(GLFW_KEY_SPACE))
+	if (input->IsKeyPressed(GLFW_KEY_SPACE))
+	{
 		triangle->Translate(vec3(1, 0, 0));
+		image->AddAnimation(ballAnim);
+	}
 
 	square->Draw();
 
@@ -89,5 +103,5 @@ void EarthGame::DeInit()
 	delete triangle;
 	delete square;
 	delete image;
-	delete anim;
+	delete idleAnim;
 }

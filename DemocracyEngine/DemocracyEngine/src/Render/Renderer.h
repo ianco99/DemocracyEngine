@@ -47,7 +47,7 @@ namespace DemoEngine_Renderer
 		
 		void CreateSprite(unsigned int& VBO, unsigned int& VAO, unsigned int& EBO, float* positions, int* indexs, int positionsSize, int indexSize);
 		void DrawTexture(unsigned int VAO, int sizeIndex, vec4 color, mat4x4 model, unsigned int& idTexture);
-		void BindTexture(const char* textureName, unsigned& textureID);
+		void BindTexture(const char* textureName, unsigned& textureID, bool filtureModeNearest);
 
 	};
 }
