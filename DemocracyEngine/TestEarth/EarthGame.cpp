@@ -56,23 +56,23 @@ void EarthGame::Init()
 
 void EarthGame::Update()
 {
-	
+	vec3 translation = vec3(0,0,0);
 
 	if (input->IsKeyPressed(GLFW_KEY_S))
 	{
-		knuckles->Translate(vec3(0, -2, 0));
+		translation = vec3(0, -2, 0);
 		knuckles->AddAnimation(walkAnim);
 
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_W))
 	{
-		knuckles->Translate(vec3(0, 2, 0));
+		translation = vec3(0, 2, 0);
 		knuckles->AddAnimation(walkAnim);
 
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_A))
 	{
-		knuckles->Translate(vec3(-2, 0, 0));
+		translation = vec3(-2, 0, 0);
 		knuckles->setRotationY(-180);
 
 		knuckles->AddAnimation(walkAnim);
@@ -81,16 +81,20 @@ void EarthGame::Update()
 	else if (input->IsKeyPressed(GLFW_KEY_D))
 	{
 		knuckles->setRotationY(1);
-		knuckles->Translate(vec3(2, 0, 0));
+		translation = vec3(2, 0, 0);
 		knuckles->AddAnimation(walkAnim);
 	}
 	else
 	{
 		knuckles->AddAnimation(idleAnim);
 	}
+
+	knuckles->Translate(translation);
+
 	if (CollisionManager::CheckCollisionRecRec(*knuckles, *rock))
 	{
-		knuckles->setPosition(lastPlayerPos);
+		//knuckles->setPosition(lastPlayerPos);
+		rock->Translate(translation);
 		knuckles->AddAnimation(rockAnim);
 	}
 	else
