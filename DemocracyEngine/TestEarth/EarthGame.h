@@ -21,6 +21,8 @@ private:
 	vec3 Rrotation;
 	vec4 Rcolor;
 
+	int speed = 6;
+
 	vec3 lastPlayerPos;
 
 	Sprite* Knuckles;

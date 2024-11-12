@@ -56,10 +56,10 @@ void EarthGame::Update()
 {
 	if (input->IsKeyPressed(GLFW_KEY_S))
 	{
-		Knuckles->Translate(vec3(0, -1, 0));
+		Knuckles->Translate(vec3(0, -speed, 0));
 		if (CollisionManager::CheckCollisionRecRec(*Knuckles, *rock))
 		{
-			rock->Translate(vec3(0, -1, 0));
+			rock->Translate(vec3(0, -speed, 0));
 			Knuckles->AddAnimation(pushAnim);
 		}
 		else
@@ -69,10 +69,10 @@ void EarthGame::Update()
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_W))
 	{
-		Knuckles->Translate(vec3(0, 1, 0));
+		Knuckles->Translate(vec3(0, speed, 0));
 		if (CollisionManager::CheckCollisionRecRec(*Knuckles, *rock))
 		{
-			rock->Translate(vec3(0, 1, 0));
+			rock->Translate(vec3(0, speed, 0));
 			Knuckles->AddAnimation(pushAnim);
 		}
 		else
@@ -83,11 +83,11 @@ void EarthGame::Update()
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_A))
 	{
-		Knuckles->Translate(vec3(-1, 0, 0));
+		Knuckles->Translate(vec3(-speed, 0, 0));
 		Knuckles->setRotationY(180);
 		if (CollisionManager::CheckCollisionRecRec(*Knuckles, *rock))
 		{
-			rock->Translate(vec3(-1, 0, 0));
+			rock->Translate(vec3(-speed, 0, 0));
 			Knuckles->AddAnimation(pushAnim);
 		}
 		else
@@ -97,12 +97,12 @@ void EarthGame::Update()
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_D))
 	{
-		Knuckles->Translate(vec3(1, 0, 0));
+		Knuckles->Translate(vec3(speed, 0, 0));
 		Knuckles->setRotationY(0);
 
 		if (CollisionManager::CheckCollisionRecRec(*Knuckles, *rock))
 		{
-			rock->Translate(vec3(1, 0, 0));
+			rock->Translate(vec3(speed, 0, 0));
 			Knuckles->AddAnimation(pushAnim);
 		}
 		else
