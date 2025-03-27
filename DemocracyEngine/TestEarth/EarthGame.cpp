@@ -12,13 +12,13 @@ EarthGame::~EarthGame()
 
 void EarthGame::Init()
 {
-	Sposition = vec3{ 1024 - 1024 / 3, 720 / 2, 0 };
-	Sscale = vec3{ 200, 200, 1 };
+	Sposition = vec3{ 0, 0, -20 };
+	Sscale = vec3{ 10, 10, 10 };
 	Srotation = vec3{ 0, 0, 0 };
 	Scolor = vec4{ 1, 1, 1, 1 };
 
-	Kposition = vec3{ 1024 / 4, 720 / 4, 0 };
-	Kscale = vec3{ 100, 200, 1 };
+	Kposition = vec3{ 0,0, -20 };
+	Kscale = vec3{ 2, 2, 2 };
 	Krotation = vec3{ 0, 0, 0 };
 	Kcolor = vec4{ 0, 0, 1, 1 };
 
@@ -30,7 +30,6 @@ void EarthGame::Init()
 	const char* rockPath = "rsc/Rock.jfif";
 	rock = new DemoEngine_Entities::Sprite(rockPath, Sscale.x, Sscale.y, Scolor, Sposition, Sscale, Srotation, true);
 
-	lastPlayerPos = vec3(1024 / 2, 720 / 2, 0);
 
 	rockIdle = new Animation();
 	rockIdle->AddFrame(74, 130, 83, 57, 244, 207, 1);
@@ -60,19 +59,19 @@ void EarthGame::Update()
 
 	if (input->IsKeyPressed(GLFW_KEY_S))
 	{
-		translation = vec3(0, -2, 0);
+		translation = vec3(0, 0, 1);
 		knuckles->AddAnimation(walkAnim);
 
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_W))
 	{
-		translation = vec3(0, 2, 0);
+		translation = vec3(0, 0, -1);
 		knuckles->AddAnimation(walkAnim);
 
 	}
 	else if (input->IsKeyPressed(GLFW_KEY_A))
 	{
-		translation = vec3(-2, 0, 0);
+		translation = vec3(-1, 0, 0);
 		knuckles->setRotationY(-180);
 
 		knuckles->AddAnimation(walkAnim);
@@ -81,7 +80,17 @@ void EarthGame::Update()
 	else if (input->IsKeyPressed(GLFW_KEY_D))
 	{
 		knuckles->setRotationY(1);
-		translation = vec3(2, 0, 0);
+		translation = vec3(1, 0, 0);
+		knuckles->AddAnimation(walkAnim);
+	}
+	else if (input->IsKeyPressed(GLFW_KEY_E))
+	{
+		translation = vec3(0, 1, 0);
+		knuckles->AddAnimation(walkAnim);
+	}
+	else if (input->IsKeyPressed(GLFW_KEY_R))
+	{
+		translation = vec3(0, -1, 0);
 		knuckles->AddAnimation(walkAnim);
 	}
 	else
@@ -93,7 +102,6 @@ void EarthGame::Update()
 
 	if (CollisionManager::CheckCollisionRecRec(*knuckles, *rock))
 	{
-		//knuckles->setPosition(lastPlayerPos);
 		rock->Translate(translation);
 		knuckles->AddAnimation(rockAnim);
 	}

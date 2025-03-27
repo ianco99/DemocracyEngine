@@ -36,9 +36,12 @@ namespace DemoEngine_Renderer
 
 		delete a;
 
-		proyection = ortho(0.0f, 1024.0f, 0.0f, 720.0f, 0.1f, 100.0f);
-		vec3 cameraPosition = vec3(0, 0, 50);
-		view = lookAt(cameraPosition, { 0,0,0 }, { 0,1,0 });
+		//proyection = ortho(0.0f, 1024.0f, 0.0f, 720.0f, 0.1f, 100.0f);
+		//							fov, aspect, near, far	
+		proyection = perspective(glm::radians(90.0f), 1024.0f / 720.0f, 0.1f, 100.0f);
+		//proyection = frustum(-1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f);
+		vec3 cameraPosition = vec3(0, 0, 10.0f);
+		view = lookAt(cameraPosition, cameraPosition + vec3(0.0f, 0.0f, -1.0f), {0,1,0});
 	}
 
 	Renderer::~Renderer()
