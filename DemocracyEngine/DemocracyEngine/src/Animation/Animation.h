@@ -20,6 +20,8 @@ namespace DemoEngine_Animations
 		Animation();
 		~Animation();
 
+		void Reset();
+
 		void Update(DemoTimer* timer);
 		void AddFrame(float frameX, float frameY, float frameWidth,
 			float frameHeight, float textureWidth, float textureHeight, float durationInSecs);

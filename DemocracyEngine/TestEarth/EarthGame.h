@@ -11,11 +11,6 @@ using namespace DemoEngine_Collisions;
 class EarthGame final : public BaseGame
 {
 private:
-	vec3 Sposition;
-	vec3 Sscale;
-	vec3 Srotation;
-	vec4 Scolor;
-
 	vec3 Kposition;
 	vec3 Kscale;
 	vec3 Krotation;
@@ -28,13 +23,7 @@ private:
 
 	Animation* ballAnim;
 
-	Animation* rockAnim;
-
-	Animation* rockIdle;
-
 	Sprite* knuckles;
-
-	Sprite* rock;
 
 	DemoEngine_Animations::DemoTimer* timer;
 

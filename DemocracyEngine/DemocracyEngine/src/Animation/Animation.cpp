@@ -15,6 +15,12 @@ namespace DemoEngine_Animations
 
 	}
 
+	void Animation::Reset()
+	{
+		currentTime = 0;
+		currentFrame = 0;
+	}
+
 	void Animation::Update(DemoTimer* timer)
 	{
 		currentTime += DemoTimer::GetDeltaTime();
