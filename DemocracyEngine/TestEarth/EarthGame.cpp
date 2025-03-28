@@ -17,12 +17,15 @@ void EarthGame::Init()
 	Krotation = vec3{ 0, 0, 0 };
 	Kcolor = vec4{ 0, 0, 1, 1 };
 
+	Kposition2 = vec3{ 0,0, 10 };
+
 	timer = new DemoEngine_Animations::DemoTimer();
 
 	const char* path = "rsc/Knuckles_Sprite_Sheet.png";
 	knuckles = new DemoEngine_Entities::Sprite(path, 646, 473, 2, 434, 33, 38, Kcolor, Kposition, Kscale, Krotation, true);
 
-	
+	knuckles2 = new DemoEngine_Entities::Sprite(path, 646, 473, 2, 434, 33, 38, Kcolor, Kposition, Kscale, Krotation, true);
+
 	walkAnim = new Animation();
 	walkAnim->AddFrame(339, 388, 33, 38, 646, 473, 1, 3, 9);
 
@@ -37,7 +40,7 @@ void EarthGame::Init()
 
 void EarthGame::Update()
 {
-	vec3 translation = vec3(0,0,0);
+	vec3 translation = vec3(0, 0, 0);
 
 	if (input->IsKeyPressed(GLFW_KEY_S))
 	{
@@ -88,13 +91,15 @@ void EarthGame::Update()
 	knuckles->Translate(translation);
 
 	knuckles->Update(timer);
-
+	
 	knuckles->Draw();
+	knuckles2->Draw();
 }
 
 void EarthGame::DeInit()
 {
 	delete knuckles;
+	delete knuckles2;
 	delete idleAnim;
 	delete walkAnim;
 	delete ballAnim;

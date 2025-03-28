@@ -16,6 +16,8 @@ private:
 	vec3 Krotation;
 	vec4 Kcolor;
 
+	vec3 Kposition2;
+
 	vec3 lastPlayerPos;
 
 	Animation* idleAnim;
@@ -24,6 +26,7 @@ private:
 	Animation* ballAnim;
 
 	Sprite* knuckles;
+	Sprite* knuckles2;
 
 	DemoEngine_Animations::DemoTimer* timer;
 

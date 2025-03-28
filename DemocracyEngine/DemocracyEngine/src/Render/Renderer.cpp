@@ -23,22 +23,22 @@ namespace DemoEngine_Renderer
 		primitiveShader = a->InitShader("rsc/PrimitiveShader.DemoShader");
 		textureShader = a->InitShader("rsc/TextureShader.DemoShader");
 
-		glEnable(GL_DEPTH);
+		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
 
 		glEnable(GL_SAMPLE_ALPHA_TO_COVERAGE);
 		glEnable(GL_SAMPLE_ALPHA_TO_ONE);
 		glFrontFace(GL_CCW);
-		glEnable(GL_BLEND); //Transparency
+		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		//glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
 		glEnable(GL_ALPHA);
 
 		delete a;
 
 		proyection = perspective(glm::radians(90.0f), 1024.0f / 720.0f, 0.1f, 100.0f);
 		vec3 cameraPosition = vec3(0, 0, 10.0f);
-		view = lookAt(cameraPosition, cameraPosition + vec3(0.0f, 0.0f, -1.0f), {0,1,0});
+		view = lookAt(cameraPosition, cameraPosition + vec3(0.0f, 0.0f, -1.0f), { 0,1,0 });
 	}
 
 	Renderer::~Renderer()
@@ -49,8 +49,7 @@ namespace DemoEngine_Renderer
 	void Renderer::Update()
 	{
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
 	void Renderer::CreateShape(unsigned int& VBO, unsigned int& VAO, unsigned int& EBO, float* positions, int* indexs, int positionsSize, int indexSize)
@@ -203,6 +202,11 @@ namespace DemoEngine_Renderer
 
 		glUseProgram(0);
 	}
+
+	//void Renderer::DrawScene(Entity elements[])
+	//{
+	//
+	//}
 
 	Renderer* Renderer::GetRender()
 	{

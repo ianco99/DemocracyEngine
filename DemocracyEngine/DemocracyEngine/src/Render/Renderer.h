@@ -49,5 +49,6 @@ namespace DemoEngine_Renderer
 		void DrawTexture(unsigned int VAO, int sizeIndex, vec4 color, mat4x4 model, unsigned int& idTexture);
 		void BindTexture(const char* textureName, unsigned& textureID, bool filtureModeNearest);
 
+		//void DrawScene(Entity elements[]);
 	};
 }
