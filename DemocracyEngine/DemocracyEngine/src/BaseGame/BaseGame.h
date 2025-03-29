@@ -4,10 +4,12 @@
 #include "../Render/Renderer.h"
 #include "../Window/Window.h"
 #include "../Input/Input.h"
+#include "../Camera/Camera.h"
 
 using namespace DemoEngine_Window;
 using namespace DemoEngine_Renderer;
 using namespace DemoEngine_Input;
+using namespace DemoEngine_Camera;
 
 namespace DemoEngine_BaseGame
 {
@@ -16,9 +18,10 @@ namespace DemoEngine_BaseGame
 	private:
 		Window* window;
 		Renderer* renderer;
-
+	
 	protected:
 		Input* input;
+		Camera* camera;
 
 	public:
 		BaseGame();

@@ -28,6 +28,10 @@ namespace DemoEngine_Window
 		
 		bool ShouldClose();
 		bool GetIsCreated();
+		
+		float GetHeight();
+		float GetWidth();
+
 		GLFWwindow* GetGLFWwindow();
 		void Update();
 

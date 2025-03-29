@@ -81,6 +81,16 @@ namespace DemoEngine_Window
         return isCreated;
     }
 
+    float Window::GetWidth()
+    {
+        return width;
+    }
+
+    float Window::GetHeight()
+    {
+		return height;
+    }
+
     GLFWwindow* Window::GetGLFWwindow()
     {
         return glfwWindow;
