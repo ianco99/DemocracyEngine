@@ -1,0 +1,30 @@
+#shader vertex
+#version 330 core
+
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec4 aColor;
+
+uniform mat4 u_MVP;
+out vec4 ourColor;
+
+void main()
+{
+	gl_Position = u_MVP * vec4(aPos, 1.0f);
+	ourColor = aColor;
+};
+
+#shader fragment
+#version 330 core
+    
+out vec4 FragColor;
+in vec4 ourColor;
+uniform vec4 u_Color;
+
+uniform float u_AmbientStrength = 0.2;
+            
+void main()
+{
+	vec4 ambient = (ourColor * u_Color) * u_AmbientStrength;
+	ambient.w = ourColor.w * u_Color.w;
+    FragColor = ambient;
+}  

@@ -117,7 +117,7 @@ namespace DemoEngine_Entities
 	void Entity::UpdateTMatrix()
 	{
 		position = mat4(1.0);
-		vec3 newPositionSet = { LocalPosition.x, LocalPosition.y, -LocalPosition.z };
+		vec3 newPositionSet = { LocalPosition.x, LocalPosition.y, LocalPosition.z };
 		position = translate(position, newPositionSet);
 
 		mat4 rotationX = glm::rotate(mat4(1.0), radians(LocalRotation.x), vec3(1, 0, 0));
@@ -131,5 +131,15 @@ namespace DemoEngine_Entities
 		scale = glm::scale(scale, vec3(LocalScale.x, LocalScale.y, LocalScale.z));
 
 		model = position * rotation * scale;
+	}
+
+	void Entity::setColor(vec4 rgba)
+	{
+		color = rgba;
+	}
+
+	vec4 Entity::getColor()
+	{
+		return color;
 	}
 }

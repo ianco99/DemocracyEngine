@@ -1,5 +1,9 @@
 #include "Triangle.h"
 
+#include "../Render/Renderer.h"
+
+using namespace DemoEngine_Renderer;
+
 namespace DemoEngine_Entities
 {
 	Triangle::Triangle(vec3 newPosition, vec3 newRotation, vec3 newScale): Shape(newPosition, newRotation, newScale)
@@ -27,6 +31,6 @@ namespace DemoEngine_Entities
 
 	void Triangle::Draw()
 	{
-		Renderer::GetRender()->DrawShape(VAO, model, color, indexSize);
+		Renderer::GetRender()->DrawEntity2D(VAO, model, color, indexSize);
 	}
 }

@@ -1,4 +1,7 @@
 #include "Sprite.h"
+#include "../Render/Renderer.h"
+
+using namespace DemoEngine_Renderer;
 
 namespace DemoEngine_Entities
 {

@@ -13,10 +13,13 @@ EarthGame::~EarthGame()
 void EarthGame::Init()
 {
 	Kposition = vec3{ 0,0, 10 };
-	Kscale = vec3{ 2, 2, 2 };
+	Kscale = vec3{ 20, 20, 20 };
 	Krotation = vec3{ 0, 0, 0 };
 	Kcolor = vec4{ 0, 0, 1, 1 };
 
+	pCube = new Cube(Kposition, Krotation,Kscale);
+	pCube->setColor({1,0,0,1});
+	
 	timer = new DemoEngine_Animations::DemoTimer();
 
 	const char* path = "rsc/Knuckles_Sprite_Sheet.png";
@@ -89,7 +92,8 @@ void EarthGame::Update()
 
 	knuckles->Update(timer);
 
-	knuckles->Draw();
+	//knuckles->Draw();
+	pCube->Draw();
 }
 
 void EarthGame::DeInit()
@@ -98,4 +102,6 @@ void EarthGame::DeInit()
 	delete idleAnim;
 	delete walkAnim;
 	delete ballAnim;
+	
+	delete pCube;
 }

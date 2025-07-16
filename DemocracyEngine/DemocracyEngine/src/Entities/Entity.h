@@ -1,11 +1,14 @@
 #pragma once
-#include "../Render/Renderer.h"
+#include "../Tools/Export.h"
 
-using namespace DemoEngine_Renderer;
+#include <glm/mat4x4.hpp>
+#include <glm/ext/matrix_clip_space.hpp>
+#include <glm/ext/matrix_transform.hpp>
+
+using namespace  glm;
 
 namespace DemoEngine_Entities
 {
-    //make abstract class
     class EXPORT Entity
     {
     protected:
@@ -18,9 +21,18 @@ namespace DemoEngine_Entities
         vec3 LocalScale;
         vec3 LocalRotation;
 
+        vec4 color;
+        
+        unsigned int VBO = 0;
+        unsigned int VAO = 0;
+        unsigned int EBO = 0;
+
+        int indexSize;
+        int vertexSize;
+
     public:
         Entity(glm::vec3 newPosition, glm::vec3 newRotation, glm::vec3 newScale);
-        ~Entity();
+        virtual ~Entity();
         virtual void Draw();
 
         void setPosition(glm::vec3 newPosition);
@@ -42,5 +54,8 @@ namespace DemoEngine_Entities
         void rotateZ(float incrementRotation);
 
         void UpdateTMatrix();
+
+        void setColor(vec4 rgba);
+        vec4 getColor();
     };
 }

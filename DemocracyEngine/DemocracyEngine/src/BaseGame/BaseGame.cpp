@@ -1,6 +1,5 @@
 #include "BaseGame.h"
 
-#include "../Entities/Triangle.h"
 #include "../Entities/Square.h"
 #include "../Tools/DemoTimer.h"
 
@@ -12,10 +11,20 @@ namespace DemoEngine_BaseGame
 {
     BaseGame::BaseGame()
     {
-        window = new Window(1024, 720, "Democracy Engine");
-        renderer = new Renderer();
-        input = new Input(window);
+        vec2 windowXY;
+        windowXY.x = 1024;
+        windowXY.y = 720;
 
+        MainCamera = new Camera(windowXY, 20000.0f, {0,0,0}, {0,-90,0}, {1,1,1}, CameraMode::FirstPerson);
+        MainCamera->setPosition(vec3{0,0,0});
+        lightManager = new LightManager();
+		
+        window = new Window(windowXY.x, windowXY.y, "Democracy Engine");
+        renderer = new Renderer(windowXY, MainCamera, lightManager);
+        input = new Input(window);
+        MainCamera->SetInput(input);
+
+		
         Init();
     }
 
@@ -24,16 +33,19 @@ namespace DemoEngine_BaseGame
         delete renderer;
         delete window;
         delete input;
+        delete lightManager;
     }
 
     void BaseGame::EngineLoop()
     {
-        
+
         while (!window->ShouldClose())
         {
             DemoTimer::Update(glfwGetTime());
+            MainCamera->Update();
             renderer->Update();
-
+            input->Update();
+			
             Update();
 
             window->Update();
@@ -43,7 +55,7 @@ namespace DemoEngine_BaseGame
 
     void BaseGame::Init()
     {
-        
+
     }
 
     void BaseGame::Update()

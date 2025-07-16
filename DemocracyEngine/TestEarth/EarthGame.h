@@ -3,6 +3,7 @@
 #include "Entities/Triangle.h"
 #include "Entities/Square.h"
 #include "CollisionManager/CollisionManager.h"
+#include "Entities/Cube.h"
 
 using namespace DemoEngine_BaseGame;
 using namespace DemoEngine_Entities;
@@ -18,6 +19,8 @@ private:
 
 	vec3 lastPlayerPos;
 
+	Cube* pCube;
+	
 	Animation* idleAnim;
 	Animation* walkAnim;
 

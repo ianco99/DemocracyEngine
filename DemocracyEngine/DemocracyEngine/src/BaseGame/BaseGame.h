@@ -1,13 +1,10 @@
 #pragma once
-#include <iostream>
 #include "../src/Tools/Export.h"
 #include "../Render/Renderer.h"
 #include "../Window/Window.h"
-#include "../Input/Input.h"
 
 using namespace DemoEngine_Window;
 using namespace DemoEngine_Renderer;
-using namespace DemoEngine_Input;
 
 namespace DemoEngine_BaseGame
 {
@@ -27,7 +24,10 @@ namespace DemoEngine_BaseGame
 		virtual void Init();
 		virtual void Update();
 		virtual void DeInit();
-		//possible virtual Draw method in which all draw methods must be called
+
 		void EngineLoop();
+
+		Camera* MainCamera;
+		LightManager* lightManager;
 	};
 }

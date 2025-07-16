@@ -1,6 +1,8 @@
 #pragma once
 #include "Entity.h"
 
+using namespace glm;
+
 namespace DemoEngine_Entities
 {
     class EXPORT Entity2D : public Entity

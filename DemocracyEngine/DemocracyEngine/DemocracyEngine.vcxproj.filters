@@ -81,6 +81,11 @@
     <ClCompile Include="src\CollisionManager\CollisionManager.cpp">
       <Filter>Src\CollisionManager</Filter>
     </ClCompile>
+    <ClCompile Include="src\Camera\Camera.cpp" />
+    <ClCompile Include="src\Entities\Entity3D.cpp" />
+    <ClCompile Include="src\Input.cpp" />
+    <ClCompile Include="src\Mesh\Importer3D.cpp" />
+    <ClCompile Include="src\Render\LightManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseGame\BaseGame.h">
@@ -137,5 +142,11 @@
     <ClInclude Include="src\CollisionManager\CollisionManager.h">
       <Filter>Src\CollisionManager</Filter>
     </ClInclude>
+    <ClInclude Include="src\Camera\Camera.h" />
+    <ClInclude Include="src\Entities\Entity3D.h" />
+    <ClInclude Include="src\Input.h" />
+    <ClInclude Include="src\Mesh\Importer3D.h" />
+    <ClInclude Include="src\Render\LightManager.h" />
+    <ClInclude Include="src\Render\Material.h" />
   </ItemGroup>
 </Project>
