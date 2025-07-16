@@ -19,6 +19,9 @@ private:
 	vec3 lastPlayerPos;
 
 	Model3D* jester;
+	Model3D* snowman;
+	Model3D* house;
+	Model3D* cake;
 	
 	Cube* pCube;
 	Cube* floor;

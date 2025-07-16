@@ -25,7 +25,7 @@ private:
     vec3 thirdPersonTarget = vec3(0.0f);
     bool ThirdPersonCamera = false;
     float thirdPersonDistance = 500.0f;
-    float thirdPersonHeight = 250.0f;
+    float thirdPersonHeight = 50.0f;
 
     float yaw = -90.0f;
     float pitch = 0.0f;

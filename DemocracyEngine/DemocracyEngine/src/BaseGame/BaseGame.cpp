@@ -15,7 +15,7 @@ namespace DemoEngine_BaseGame
         windowXY.x = 1024;
         windowXY.y = 720;
 
-        MainCamera = new Camera(windowXY, 20000.0f, {0,0,0}, {0,-90,0}, {1,1,1}, CameraMode::FirstPerson);
+        MainCamera = new Camera(windowXY, 20000.0f, {0,0,0}, {0,-90,0}, {1,1,1}, CameraMode::ThirdPerson);
         MainCamera->setPosition(vec3{0,0,0});
         lightManager = new LightManager();
 		

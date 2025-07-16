@@ -19,8 +19,6 @@ namespace DemoEngine_Importer
             aiProcess_CalcTangentSpace |
             aiProcess_PreTransformVertices);
 
-        std::cout << "sasa";
-
         if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
         {
             std::cerr << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
