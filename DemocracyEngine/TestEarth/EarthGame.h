@@ -20,6 +20,12 @@ private:
 	vec3 lastPlayerPos;
 
 	Cube* pCube;
+	Cube* floor;
+	Cube* wall1;
+	Cube* wall2;
+	Cube* wall3;
+	Cube* wall4;
+	Cube* Top;
 	
 	Animation* idleAnim;
 	Animation* walkAnim;

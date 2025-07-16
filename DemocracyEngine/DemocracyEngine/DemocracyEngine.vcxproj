@@ -33,6 +33,7 @@
     <ClCompile Include="src\Entities\Square.cpp" />
     <ClCompile Include="src\Entities\Triangle.cpp" />
     <ClCompile Include="src\Input\Input.cpp" />
+    <ClCompile Include="src\Interface\ServiceProvider.cpp" />
     <ClCompile Include="src\Render\LightManager.cpp" />
     <ClCompile Include="src\Render\Renderer.cpp" />
     <ClCompile Include="src\Render\Shader.cpp" />
@@ -56,6 +57,10 @@
     <ClInclude Include="src\Entities\Square.h" />
     <ClInclude Include="src\Entities\Triangle.h" />
     <ClInclude Include="src\Input\Input.h" />
+    <ClInclude Include="src\Interface\ILightService.h" />
+    <ClInclude Include="src\Interface\Light.h" />
+    <ClInclude Include="src\Interface\LightServiceProvider.h" />
+    <ClInclude Include="src\Interface\ServiceProvider.h" />
     <ClInclude Include="src\Render\LightManager.h" />
     <ClInclude Include="src\Render\Renderer.h" />
     <ClInclude Include="src\Render\Shader.h" />
