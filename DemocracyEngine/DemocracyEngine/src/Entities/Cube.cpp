@@ -84,22 +84,22 @@ namespace DemoEngine_Entities
             //xyz-xyz-rgba-uv
 
             // Cara frontal
-            -0.5f, -0.5f, 0.5f,  0.0f, 0.0f, 1.0f,   1.0f, 1.0f, 1.0f, 1.0f,    0.0f, 0.0f, // bottom left
-            0.5f, -0.5f, 0.5f,   0.0f, 0.0f, 1.0f,   1.0f, 1.0f, 1.0f, 1.0f,    1.0f, 0.0f, // bottom right
-            0.5f, 0.5f, 0.5f,    0.0f, 0.0f, 1.0f,   1.0f, 1.0f, 1.0f, 1.0f,    1.0f, 1.0f, // top right
-            -0.5f, 0.5f, 0.5f,   0.0f, 0.0f, 1.0f,    1.0f, 1.0f, 1.0f, 1.0f,    0.0f, 1.0f, // top left
+            -0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, // bottom left
+            0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, // bottom right
+            0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, // top right
+            -0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, // top left
 
             // Cara trasera
-            -0.5f, -0.5f, -0.5f,     0.0f, 0.0f, -1.0f,     1.0f, 1.0f, 1.0f, 1.0f,     0.0f, 0.0f, // bottom left
-            0.5f, -0.5f, -0.5f,      0.0f, 0.0f, -1.0f,     1.0f, 1.0f, 1.0f, 1.0f,     1.0f, 0.0f, // bottom right
-            0.5f, 0.5f, -0.5f,       0.0f, 0.0f, -1.0f,     1.0f, 1.0f, 1.0f, 1.0f,     1.0f, 1.0f, // top right
-            -0.5f, 0.5f, -0.5f,      0.0f, 0.0f, -1.0f,     1.0f, 1.0f, 1.0f, 1.0f,     0.0f, 1.0f, // top left
+            -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, // bottom left
+            0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, // bottom right
+            0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, // top right
+            -0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, // top left
 
             // Cara superior
-            0.5f, 0.5f, 0.5f,    0.0f, 1.0f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,      0.0f, 0.0f, // bottom left
-            -0.5f, 0.5f, 0.5f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,     1.0f, 0.0f, // bottom right
-            -0.5f, 0.5f, -0.5f,  0.0f, 1.0f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,     1.0f, 1.0f, // top right
-            0.5f, 0.5f, -0.5f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,     0.0f, 1.0f, // top left
+            0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, // bottom left
+            -0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, // bottom right
+            -0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, // top right
+            0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, // top left
 
             // Cara inferior
             -0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, // bottom left

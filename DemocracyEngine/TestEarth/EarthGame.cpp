@@ -15,11 +15,12 @@ void EarthGame::Init()
     Kscale = vec3{20, 20, 20};
     Krotation = vec3{0, 0, 0};
     Kcolor = vec4{0, 0, 1, 1};
-
-    pCube = new Cube(Kposition, Krotation, Kscale);
-    pCube->setColor({1, 0, 0, 1});
-
+    
     const char* path = "rsc/SpritesAnimations/Orange.png";
+
+    pCube = new Cube(Kposition, Krotation, Kscale, path);
+    pCube->setMaterial(BlackPlastic);
+
 
 #pragma region Room
     path = "rsc/SpritesAnimations/White.png";
@@ -33,7 +34,7 @@ void EarthGame::Init()
 
     wall1 = new Cube(vec3{-halfSize, wallHeight / 2 - 100, 0}, vec3{0, 90, 0}, vec3{4000, wallHeight, wallThickness},
                      path);
-    wall1->setMaterial(Obsidian);
+    wall1->setMaterial(Turquoise);
 
     wall2 = new Cube(vec3{halfSize, wallHeight / 2 - 100, 0}, vec3{0, 90, 0}, vec3{4000, wallHeight, wallThickness},
                      path);
@@ -48,7 +49,7 @@ void EarthGame::Init()
     wall4->setMaterial(WhitePlastic);
 
     Top = new Cube(vec3{0, wallHeight - 100, 0}, vec3{0, 0, 0}, vec3{4000, 5, 4000}, path);
-    Top->setMaterial(Silver);
+    Top->setMaterial(RedPlastic);
 #pragma endregion
 
     timer = new DemoEngine_Animations::DemoTimer();
