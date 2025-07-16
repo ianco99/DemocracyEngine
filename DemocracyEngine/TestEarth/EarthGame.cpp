@@ -15,12 +15,15 @@ void EarthGame::Init()
     Kscale = vec3{20, 20, 20};
     Krotation = vec3{0, 0, 0};
     Kcolor = vec4{0, 0, 1, 1};
+
     
     const char* path = "rsc/SpritesAnimations/Orange.png";
 
     pCube = new Cube(Kposition, Krotation, Kscale, path);
     pCube->setMaterial(BlackPlastic);
 
+    path = "rsc/Mesh/Jester.fbx";
+    jester = new Model3D(vec3(500, 0, 0), vec3(0, 0, 0), vec3(1, 1, 1), path, false);
 
 #pragma region Room
     path = "rsc/SpritesAnimations/White.png";
@@ -55,7 +58,7 @@ void EarthGame::Init()
     timer = new DemoEngine_Animations::DemoTimer();
 
     float offset = halfSize * 0.75f;
-    
+
     glm::vec3 corners[4] = {
         glm::vec3(-offset, 0, -offset),
         glm::vec3(offset, 0, -offset),
@@ -69,7 +72,7 @@ void EarthGame::Init()
         glm::vec3(0.0f, 0.0f, 5.0f),
         glm::vec3(1.0f, 1.0f, 0.0f)
     };
-    
+
     for (int i = 0; i < 4; i++)
     {
         PointLight pl;
@@ -105,7 +108,7 @@ void EarthGame::Init()
     lightManager->spotLights.push_back(spotLight);
 
     lightManager->directionalLights.push_back({glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(0.3f)});
-    
+
     path = "rsc/Knuckles_Sprite_Sheet.png";
     knuckles = new DemoEngine_Entities::Sprite(path, 646, 473, 2, 434, 33, 38, Kcolor, Kposition, Kscale, Krotation,
                                                true);
@@ -176,7 +179,8 @@ void EarthGame::Update()
 
     //knuckles->Draw();
     pCube->Draw();
-
+    jester->Draw();
+    
     floor->Draw();
     wall1->Draw();
     wall2->Draw();

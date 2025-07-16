@@ -6,9 +6,6 @@
 #include <glm/glm.hpp>
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
-#include <assimp/postprocess.h>
-#include "glew.h"
-#include <../src/Tools/stb_image.h>
 
 #include "../Tools/Export.h"
 

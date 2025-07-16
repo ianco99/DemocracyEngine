@@ -1,9 +1,8 @@
 #include "BaseGame/BaseGame.h"
 #include "Entities/Sprite.h"
-#include "Entities/Triangle.h"
-#include "Entities/Square.h"
 #include "CollisionManager/CollisionManager.h"
 #include "Entities/Cube.h"
+#include "Entities/Model3D.h"
 
 using namespace DemoEngine_BaseGame;
 using namespace DemoEngine_Entities;
@@ -19,6 +18,8 @@ private:
 
 	vec3 lastPlayerPos;
 
+	Model3D* jester;
+	
 	Cube* pCube;
 	Cube* floor;
 	Cube* wall1;
