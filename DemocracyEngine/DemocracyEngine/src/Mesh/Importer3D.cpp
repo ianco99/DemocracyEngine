@@ -1,4 +1,10 @@
 ﻿#include "Importer3D.h"
+#include "../Tools/stb_image.h"
+
+#include <glew.h>
+
+#include "assimp/postprocess.h"
+#include "assimp/Importer.hpp"
 
 namespace DemoEngine_Importer
 {
@@ -12,6 +18,8 @@ namespace DemoEngine_Importer
             aiProcess_FlipUVs |
             aiProcess_CalcTangentSpace |
             aiProcess_PreTransformVertices);
+
+        std::cout << "sasa";
 
         if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
         {

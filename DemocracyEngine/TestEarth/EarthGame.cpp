@@ -22,7 +22,7 @@ void EarthGame::Init()
     pCube = new Cube(Kposition, Krotation, Kscale, path);
     pCube->setMaterial(BlackPlastic);
 
-    path = "rsc/Mesh/Jester.fbx";
+    path = "../rsc/Mesh/Jester.fbx";
     jester = new Model3D(vec3(500, 0, 0), vec3(0, 0, 0), vec3(1, 1, 1), path, false);
 
 #pragma region Room
