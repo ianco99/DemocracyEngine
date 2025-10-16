@@ -18,9 +18,9 @@ private:
 
 	vec3 lastPlayerPos;
 
-	Model3D* jester;
-	Model3D* snowman;
-	Model3D* house;
+	Model3D* shield;
+	Model3D* bow;
+	Model3D* mSword;
 	Model3D* cake;
 	
 	Cube* pCube;

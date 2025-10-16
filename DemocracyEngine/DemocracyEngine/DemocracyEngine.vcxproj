@@ -50,6 +50,7 @@
     <ClInclude Include="src\BaseGame\BaseGame.h" />
     <ClInclude Include="src\Camera\Camera.h" />
     <ClInclude Include="src\CollisionManager\CollisionManager.h" />
+    <ClInclude Include="src\Component.h" />
     <ClInclude Include="src\Entities\Cube.h" />
     <ClInclude Include="src\Entities\Entity.h" />
     <ClInclude Include="src\Entities\Entity2D.h" />
@@ -72,6 +73,7 @@
     <ClInclude Include="src\Tools\Export.h" />
     <ClInclude Include="src\Tools\stb_image.h" />
     <ClInclude Include="src\Tools\TextureImporter.h" />
+    <ClInclude Include="src\Transform.h" />
     <ClInclude Include="src\Window\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

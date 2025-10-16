@@ -25,13 +25,13 @@ void EarthGame::Init()
 
 
     path = "rsc/Mesh/shield.fbx";
-    jester = new Model3D(vec3(100, 0, 300), vec3(0, 0, 0), vec3(10, 10, 10), path, false);
+    shield = new Model3D(vec3(100, 0, 300), vec3(0, 0, 0), vec3(5, 5, 5), path, false);
 
     path = "rsc/Mesh/bow.fbx";
-    snowman = new Model3D(vec3{0, -40, -900}, vec3{0, 0, 0}, vec3{10, 10, 10}, path, false);
+    bow = new Model3D(vec3{0, 40, -900}, vec3{0, 0, 0}, vec3{2, 2, 2}, path, false);
 
     path = "rsc/Mesh/masterSword.fbx";
-    house = new Model3D(vec3(900, 2, -600), vec3(0, 0, 0), vec3(10, 10, 10), path, false);
+    mSword = new Model3D(vec3(900, 2, -600), vec3(0, 0, 0), vec3(10, 10, 10), path, false);
 
     path = "rsc/Mesh/cake_texturizar.fbx";
     cake = new Model3D(vec3(200, 2, 100), vec3(0, 0, 0), vec3(0.5f, 0.5f, 0.5f), path, false);
@@ -119,23 +119,8 @@ void EarthGame::Init()
     spotLight.intensity = 900.0f;
     lightManager->spotLights.push_back(spotLight);
 
-    lightManager->directionalLights.push_back({glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(0.3f)});
-
-    path = "rsc/Knuckles_Sprite_Sheet.png";
-    knuckles = new DemoEngine_Entities::Sprite(path, 646, 473, 2, 434, 33, 38, Kcolor, Kposition, Kscale, Krotation,
-                                               true);
-
-
-    walkAnim = new Animation();
-    walkAnim->AddFrame(339, 388, 33, 38, 646, 473, 1, 3, 9);
-
-    ballAnim = new Animation();
-    ballAnim->AddFrame(1, 314, 31, 28, 646, 473, 1, 6, 1);
-
-    idleAnim = new Animation();
-    idleAnim->AddFrame(2, 434, 33, 38, 646, 473, 1, 1);
-
-    knuckles->AddAnimation(walkAnim);
+    
+    lightManager->directionalLights.push_back({glm::vec3(200.0f, -1.0f, 5.0f), glm::vec3(0.5f)});
 }
 
 void EarthGame::Update()
@@ -147,55 +132,32 @@ void EarthGame::Update()
     if (input->IsKeyPressed(GLFW_KEY_S))
     {
         translation = vec3(0, 0, 10);
-        knuckles->AddAnimation(walkAnim);
     }
     else if (input->IsKeyPressed(GLFW_KEY_W))
     {
         translation = vec3(0, 0, -10);
-        knuckles->AddAnimation(walkAnim);
     }
     else if (input->IsKeyPressed(GLFW_KEY_A))
     {
         translation = vec3(-10, 0, 0);
-        knuckles->setRotationY(-180);
-
-        knuckles->AddAnimation(walkAnim);
     }
     else if (input->IsKeyPressed(GLFW_KEY_D))
     {
-        knuckles->setRotationY(1);
         translation = vec3(10, 0, 0);
-        knuckles->AddAnimation(walkAnim);
     }
     else if (input->IsKeyPressed(GLFW_KEY_E))
     {
         translation = vec3(0, 10, 0);
-        knuckles->AddAnimation(walkAnim);
     }
     else if (input->IsKeyPressed(GLFW_KEY_R))
     {
         translation = vec3(0, -10, 0);
-        knuckles->AddAnimation(walkAnim);
-    }
-    else
-    {
-        knuckles->AddAnimation(idleAnim);
-    }
-
-    if (input->IsKeyPressed(GLFW_KEY_SPACE))
-    {
-        knuckles->AddAnimation(ballAnim);
     }
 
     pCube->Translate(translation * 5.0f);
 
-    knuckles->Translate(translation);
-
-    knuckles->Update(timer);
-
-    //knuckles->Draw();
     pCube->Draw();
-    jester->Draw();
+    shield->Draw();
     cake->Draw();
 
     floor->Draw();
@@ -205,16 +167,26 @@ void EarthGame::Update()
     wall4->Draw();
     Top->Draw();
 
-    house->Draw();
-    snowman->Draw();
+    mSword->Draw();
+    bow->Draw();
 }
 
 void EarthGame::DeInit()
 {
-    delete knuckles;
     delete idleAnim;
     delete walkAnim;
     delete ballAnim;
 
     delete pCube;
+    delete mSword;
+    delete bow;
+    delete cake;
+    delete shield;
+    
+    delete floor;
+    delete wall1;
+    delete wall2;
+    delete wall3;
+    delete wall4;
+    delete Top;
 }

@@ -12,26 +12,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestEarth", "TestEarth\Test
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{52CCE46E-260F-4213-82C6-313190859074}.Debug|x64.ActiveCfg = Debug|x64
-		{52CCE46E-260F-4213-82C6-313190859074}.Debug|x64.Build.0 = Debug|x64
 		{52CCE46E-260F-4213-82C6-313190859074}.Debug|x86.ActiveCfg = Debug|Win32
 		{52CCE46E-260F-4213-82C6-313190859074}.Debug|x86.Build.0 = Debug|Win32
-		{52CCE46E-260F-4213-82C6-313190859074}.Release|x64.ActiveCfg = Release|x64
-		{52CCE46E-260F-4213-82C6-313190859074}.Release|x64.Build.0 = Release|x64
 		{52CCE46E-260F-4213-82C6-313190859074}.Release|x86.ActiveCfg = Release|Win32
 		{52CCE46E-260F-4213-82C6-313190859074}.Release|x86.Build.0 = Release|Win32
-		{81056D0B-39C4-43A5-B1BB-93E839E6DE5B}.Debug|x64.ActiveCfg = Debug|x64
-		{81056D0B-39C4-43A5-B1BB-93E839E6DE5B}.Debug|x64.Build.0 = Debug|x64
 		{81056D0B-39C4-43A5-B1BB-93E839E6DE5B}.Debug|x86.ActiveCfg = Debug|Win32
 		{81056D0B-39C4-43A5-B1BB-93E839E6DE5B}.Debug|x86.Build.0 = Debug|Win32
-		{81056D0B-39C4-43A5-B1BB-93E839E6DE5B}.Release|x64.ActiveCfg = Release|x64
-		{81056D0B-39C4-43A5-B1BB-93E839E6DE5B}.Release|x64.Build.0 = Release|x64
 		{81056D0B-39C4-43A5-B1BB-93E839E6DE5B}.Release|x86.ActiveCfg = Release|Win32
 		{81056D0B-39C4-43A5-B1BB-93E839E6DE5B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
