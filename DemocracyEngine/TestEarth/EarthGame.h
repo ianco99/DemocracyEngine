@@ -21,7 +21,7 @@ private:
 	Scene* testScene = nullptr;
 
 	Model3D* shield;
-	Model3D* bow;
+	Model3D* bike;
 	Model3D* mSword;
 	Model3D* cake;
 	
@@ -42,9 +42,10 @@ private:
 
 	DemoEngine_Animations::DemoTimer* timer;
 
-	Transform* tankTurretTransform = nullptr;
-	Transform* tankLeftCannonTransform = nullptr;
-	Transform* tankRightCannonTransform = nullptr;
+	Transform* wheelFront = nullptr;
+	Transform* wheelBack = nullptr;
+
+	float playerSpeed = 5;
 	
 public:
 	EarthGame();

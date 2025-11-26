@@ -28,7 +28,7 @@ namespace DemoEngine_Entities
         void Draw();
         void DrawOccluded(const std::vector<Plane>& bspPlanes, const std::vector<bool>& cameraSides);
         BoundingBox GetBoundingBox() const;
-        BoundingBox ComputeBoundingBoxRecursive(Transform* node);
+        BoundingBox ProcessRecursiveBoundingBox(Transform* node);
         bool IsVisible(const DemoEngine_Camera::Frustum& frustum) const;
         bool drawWireBox = false;
 

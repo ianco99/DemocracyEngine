@@ -90,7 +90,7 @@ namespace DemoEngine_Entities
         meshBoundingBoxes.push_back(box);
     }
 
-    BoundingBox Model3D::ComputeBoundingBoxRecursive(Transform* node)
+    BoundingBox Model3D::ProcessRecursiveBoundingBox(Transform* node)
     {
         BoundingBox box;
 
@@ -118,7 +118,7 @@ namespace DemoEngine_Entities
 
         for (Transform* child : node->GetChildren())
         {
-            BoundingBox childBox = ComputeBoundingBoxRecursive(child);
+            BoundingBox childBox = ProcessRecursiveBoundingBox(child);
             box.Expand(childBox);
         }
 
@@ -161,7 +161,7 @@ namespace DemoEngine_Entities
 
     void Model3D::DrawBoundingBoxesRecursive(Transform* node)
     {
-        BoundingBox globalBox = ComputeBoundingBoxRecursive(node);
+        BoundingBox globalBox = ProcessRecursiveBoundingBox(node);
         Renderer::GetRender()->DrawWireBox(globalBox, mat4(1.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), 2.0f);
 
         for (Transform* child : node->GetChildren())
@@ -206,7 +206,7 @@ namespace DemoEngine_Entities
 
     void Model3D::DrawRecursive(Transform* node, const std::vector<Plane>& bspPlanes, const std::vector<bool>& cameraSides)
     {
-        BoundingBox nodeMeshBox = ComputeBoundingBoxRecursive(node);
+        BoundingBox nodeMeshBox = ProcessRecursiveBoundingBox(node);
 
         for (int i = 0; i < meshTransforms.size(); ++i)
         {
@@ -271,11 +271,8 @@ namespace DemoEngine_Entities
 
     void Model3D::DrawOccluded(const std::vector<Plane>& bspPlanes, const std::vector<bool>& cameraSides)
     {
-        if (isActive)
-        {
-            DrawRecursive(transform, bspPlanes, cameraSides);
-        }
-
+        DrawRecursive(transform, bspPlanes, cameraSides);
+        
         if (drawWireBox)
         {
             DrawBoundingBoxesRecursive(transform);
