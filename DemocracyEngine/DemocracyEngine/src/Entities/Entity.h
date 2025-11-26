@@ -5,6 +5,8 @@
 #include <glm/ext/matrix_clip_space.hpp>
 #include <glm/ext/matrix_transform.hpp>
 
+#include "../Transform.h"
+
 using namespace  glm;
 
 namespace DemoEngine_Entities
@@ -12,15 +14,6 @@ namespace DemoEngine_Entities
     class EXPORT Entity
     {
     protected:
-        mat4x4 model;
-        mat4 position;
-        mat4 scale;
-        mat4 rotation;
-
-        vec3 LocalPosition;
-        vec3 LocalScale;
-        vec3 LocalRotation;
-
         vec4 color;
         
         unsigned int VBO = 0;
@@ -30,32 +23,21 @@ namespace DemoEngine_Entities
         int indexSize;
         int vertexSize;
 
+        bool isActive;
+
     public:
-        Entity(glm::vec3 newPosition, glm::vec3 newRotation, glm::vec3 newScale);
+        Entity(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
+        Entity(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale, Transform* parent);
         virtual ~Entity();
+        
         virtual void Draw();
 
-        void setPosition(glm::vec3 newPosition);
-        void Translate(glm::vec3 dir);
-        glm::vec3 getPosition();
-
-        glm::vec3 getScale();
-        void Scale(glm::vec3 increment);
-        void setScale(glm::vec3 newScale);
-
-        void setRotationX(float newRotationX);
-        void setRotationY(float newRotationY);
-        void setRotationZ(float newRotationZ);
-
-        vec3 GetRotation();
-
-        void rotateX(float incrementRotation);
-        void rotateY(float incrementRotation);
-        void rotateZ(float incrementRotation);
-
-        void UpdateTMatrix();
-
+        Transform* transform;
+        
         void setColor(vec4 rgba);
-        vec4 getColor();
+        vec4 GetColor() const;
+
+        void SetActive(bool isActive);
+        bool IsActive() const;
     };
 }

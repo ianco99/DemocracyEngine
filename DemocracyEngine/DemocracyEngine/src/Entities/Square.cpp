@@ -8,13 +8,13 @@ namespace DemoEngine_Entities
 {
     Square::Square(vec3 newPosition, vec3 newRotation, vec3 newScale): Shape(newPosition, newRotation, newScale)
     {
-        vertexSize = 24;
+        vertexSize = 28;
         float vertex[] = {
             // positions         // colors
-            0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom right
-            0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, // bottom left
-            -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, // top right
-            -0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f // top left
+            0.5f, 0.5f, 0.0f,    1.0f, 0.0f, 0.0f,1.0f, // bottom right
+            0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,1.0f, // bottom left
+            -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,1.0f, // top right
+            -0.5f, 0.5f, 0.0f,   0.0f, 1.0f, 1.0f,1.0f // top left
         };
 
         indexSize = 6;
@@ -35,6 +35,6 @@ namespace DemoEngine_Entities
 
     void Square::Draw()
     {
-        Renderer::GetRender()->DrawEntity2D(VAO, model, color, indexSize);
+        Renderer::GetRender()->DrawEntity2D(VAO, transform->GetModelLocalMatrix(), color, indexSize);
     }
 }

@@ -14,6 +14,7 @@ namespace DemoEngine_Collisions
 		CollisionManager();
 		~CollisionManager();
 
-		static bool CheckCollisionRecRec(Entity2D entityOne, Entity2D entityTwo);
+		static bool CheckCollisionEntityEntity(Entity2D entityOne, Entity2D entityTwo);
+		static bool CheckCollisionEntityTile(Entity2D rect, float posX, float posY, float scaleX, float scaleY);
 	};
 }

@@ -1,23 +1,20 @@
 #include "Sprite.h"
-#include "../Render/Renderer.h"
-
-using namespace DemoEngine_Renderer;
 
 namespace DemoEngine_Entities
 {
 	Sprite::Sprite(const char* textureName, int width, int height, vec4 rgba, vec3 newPosition,
-		vec3 newScale, vec3 newRotation, bool filterModeNearest) : Entity2D(newPosition, newRotation, newScale)
+		vec3 newScale, vec3 newRotation) : Entity2D(newPosition, newRotation, newScale)
 	{
 		this->width = width;
 		this->height = height;
 
-		vertexSize = 36;
+		vertexSize = 12 * 4;
 		float vertex[] = {
-			// positions		    // colors					// texture coords
-			0.5f, 0.5f, 0.0f,       1.0f, 1.0f, 1.0f, 1.0f,     1.0f, 1.0f,   // top right
-			0.5f, -0.5f, 0.0f,      1.0f, 1.0f, 1.0f, 1.0f,	    1.0f, 0.0f,   // bottom right
-			-0.5f, -0.5f, 0.0f,     1.0f, 1.0f, 1.0f, 1.0f,	    0.0f, 0.0f,   // bottom left
-			-0.5f, 0.5f, 0.0f,      1.0f, 1.0f, 1.0f, 1.0f,	    0.0f, 1.0f    // top left 
+			// positions	       //normal                  // colors					// texture coords
+			0.5f, 0.5f, 0.0f,		0.0f, 1.0f, 0.0f,       1.0f, 1.0f, 1.0f, 1.0f,       1.0f, 1.0f,   // top right
+			0.5f, -0.5f, 0.0f,		0.0f, 1.0f, 0.0f,       1.0f, 1.0f, 1.0f, 1.0f,	      1.0f, 0.0f,   // bottom right
+			-0.5f, -0.5f, 0.0f,		0.0f, 1.0f, 0.0f,       1.0f, 1.0f, 1.0f, 1.0f,	      0.0f, 0.0f,   // bottom left
+			-0.5f, 0.5f, 0.0f,		0.0f, 1.0f, 0.0f,       1.0f, 1.0f, 1.0f, 1.0f,	      0.0f, 1.0f    // top left 
 		};
 
 		indexSize = 6;
@@ -28,28 +25,28 @@ namespace DemoEngine_Entities
 		};
 
 		Renderer::GetRender()->CreateSprite(VBO, VAO, EBO, vertex, indices, vertexSize, indexSize);
-		Renderer::GetRender()->BindTexture(textureName, textureId, filterModeNearest);
+		Renderer::GetRender()->BindTexture(textureName, textureId);
 	}
 
 	Sprite::Sprite(const char* textureName, int textureWidth, int textureHeight, int startX, int startY, int cropWidth, int cropHeight,
-		vec4 rgba, vec3 newPosition, vec3 newScale, vec3 newRotation, bool filterModeNearest)
-		: Entity2D(newPosition, newRotation, newScale)
+				  vec4 rgba, vec3 newPosition, vec3 newScale, vec3 newRotation)
+	   : Entity2D(newPosition, newRotation, newScale)
 	{
 		this->width = cropWidth;
 		this->height = cropHeight;
-
-		vertexSize = 36;
+		
+		vertexSize = 12 * 4;
 		float uvX = static_cast<float>(startX) / textureWidth;
 		float uvY = static_cast<float>(startY) / textureHeight;
 		float uvWidth = static_cast<float>(width) / textureWidth;
 		float uvHeight = static_cast<float>(height) / textureHeight;
 
 		float vertex[] = {
-			// positions		    // colors					// texture coords
-			0.5f, 0.5f, 0.0f,       1.0f, 1.0f, 1.0f, 1.0f,     uvX + uvWidth, uvY + uvHeight,   // top right
-			0.5f, -0.5f, 0.0f,      1.0f, 1.0f, 1.0f, 1.0f,	    uvX + uvWidth, uvY,             // bottom right
-			-0.5f, -0.5f, 0.0f,     1.0f, 1.0f, 1.0f, 1.0f,	    uvX, uvY,                       // bottom left
-			-0.5f, 0.5f, 0.0f,      1.0f, 1.0f, 1.0f, 1.0f,	    uvX, uvY + uvHeight             // top left 
+			// positions		 //normal               // colors					// texture coords
+			0.5f, 0.5f, 0.0f,    	0.0f, 1.0f, 0.0f,     1.0f, 1.0f, 1.0f, 1.0f,     uvX + uvWidth, uvY + uvHeight,   // top right
+			0.5f, -0.5f, 0.0f,   	0.0f, 1.0f, 0.0f,     1.0f, 1.0f, 1.0f, 1.0f,	    uvX + uvWidth, uvY,             // bottom right
+			-0.5f, -0.5f, 0.0f,  	0.0f, 1.0f, 0.0f,     1.0f, 1.0f, 1.0f, 1.0f,	    uvX, uvY,                       // bottom left
+			-0.5f, 0.5f, 0.0f,   	0.0f, 1.0f, 0.0f,     1.0f, 1.0f, 1.0f, 1.0f,	    uvX, uvY + uvHeight             // top left 
 		};
 
 		indexSize = 6;
@@ -59,13 +56,12 @@ namespace DemoEngine_Entities
 		};
 
 		Renderer::GetRender()->CreateSprite(VBO, VAO, EBO, vertex, indices, vertexSize, indexSize);
-		Renderer::GetRender()->BindTexture(textureName, textureId, filterModeNearest);
+		Renderer::GetRender()->BindTexture(textureName, textureId);
 	}
-
 
 	Sprite::~Sprite()
 	{
-
+		
 	}
 
 	void Sprite::Update(DemoTimer* timer)
@@ -75,20 +71,19 @@ namespace DemoEngine_Entities
 			animation->Update(timer);
 
 			currentFrame = animation->GetCurrentFrame();
-			if (currentFrame != previousFrame || changedAnim)
+			if (currentFrame != previousFrame)
 			{
-				changedAnim = false;
 				Frame newFrame = animation->GetFrames()[currentFrame];
 
 				SetUV(newFrame);
 
 				previousFrame = currentFrame;
-
 			}
 		}
 		else
 		{
 
+			cout << "WARNING: Update being called on a sprite without animation" << endl;
 		}
 
 	}
@@ -116,11 +111,11 @@ namespace DemoEngine_Entities
 	void Sprite::AddAnimation(Animation* animation)
 	{
 		this->animation = animation;
-		changedAnim = true;
+		previousFrame = std::numeric_limits<unsigned int>::max_digits10;
 	}
 
 	void Sprite::Draw()
 	{
-		Renderer::GetRender()->DrawTexture(VAO, indexSize, color, model, textureId);
+		Renderer::GetRender()->DrawTexture(VAO, indexSize, color, transform->GetModelLocalMatrix(), textureId);
 	}
 }

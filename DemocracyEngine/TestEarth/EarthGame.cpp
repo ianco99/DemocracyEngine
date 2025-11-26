@@ -16,7 +16,7 @@ void EarthGame::Init()
     Krotation = vec3{0, 0, 0};
     Kcolor = vec4{0, 0, 1, 1};
 
-    MainCamera->setPosition(vec3{0, 100, 150});
+    MainCamera->SetCameraPosition(vec3{0, 100, 150});
 
     const char* path = "rsc/SpritesAnimations/Orange.png";
 
@@ -109,7 +109,7 @@ void EarthGame::Init()
 
     SpotLight spotLight;
     spotLight.position = glm::vec3(0, 50, 2000);
-    spotLight.direction = MainCamera->GetCameraFoward();
+    spotLight.direction = MainCamera->GetCameraForward();
     spotLight.color = glm::vec3(1.0f);
     spotLight.cutOff = 20.0f;
     spotLight.outerCutOff = 30.0f;
@@ -125,7 +125,7 @@ void EarthGame::Init()
 
 void EarthGame::Update()
 {
-    MainCamera->SetCameraTarget(pCube->getPosition());
+    MainCamera->SetCameraTarget(pCube->transform->GetGlobalPosition());
 
     vec3 translation = vec3(0, 0, 0);
 
@@ -154,7 +154,7 @@ void EarthGame::Update()
         translation = vec3(0, -10, 0);
     }
 
-    pCube->Translate(translation * 5.0f);
+    pCube->transform->Translate(translation * 5.0f);
 
     pCube->Draw();
     shield->Draw();

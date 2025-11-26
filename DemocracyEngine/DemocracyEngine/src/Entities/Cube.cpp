@@ -84,22 +84,22 @@ namespace DemoEngine_Entities
             //xyz-xyz-rgba-uv
 
             // Cara frontal
-            -0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, // bottom left
-            0.5f, -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, // bottom right
-            0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, // top right
-            -0.5f, 0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, // top left
+            -0.5f, -0.5f, 0.5f,  0.0f, 0.0f, 1.0f,   1.0f, 1.0f, 1.0f, 1.0f,    0.0f, 0.0f, // bottom left
+            0.5f, -0.5f, 0.5f,   0.0f, 0.0f, 1.0f,   1.0f, 1.0f, 1.0f, 1.0f,    1.0f, 0.0f, // bottom right
+            0.5f, 0.5f, 0.5f,    0.0f, 0.0f, 1.0f,   1.0f, 1.0f, 1.0f, 1.0f,    1.0f, 1.0f, // top right
+            -0.5f, 0.5f, 0.5f,   0.0f, 0.0f, 1.0f,    1.0f, 1.0f, 1.0f, 1.0f,    0.0f, 1.0f, // top left
 
             // Cara trasera
-            -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, // bottom left
-            0.5f, -0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, // bottom right
-            0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, // top right
-            -0.5f, 0.5f, -0.5f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, // top left
+            -0.5f, -0.5f, -0.5f,     0.0f, 0.0f, -1.0f,     1.0f, 1.0f, 1.0f, 1.0f,     0.0f, 0.0f, // bottom left
+            0.5f, -0.5f, -0.5f,      0.0f, 0.0f, -1.0f,     1.0f, 1.0f, 1.0f, 1.0f,     1.0f, 0.0f, // bottom right
+            0.5f, 0.5f, -0.5f,       0.0f, 0.0f, -1.0f,     1.0f, 1.0f, 1.0f, 1.0f,     1.0f, 1.0f, // top right
+            -0.5f, 0.5f, -0.5f,      0.0f, 0.0f, -1.0f,     1.0f, 1.0f, 1.0f, 1.0f,     0.0f, 1.0f, // top left
 
             // Cara superior
-            0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, // bottom left
-            -0.5f, 0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, // bottom right
-            -0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, // top right
-            0.5f, 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, // top left
+            0.5f, 0.5f, 0.5f,    0.0f, 1.0f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,      0.0f, 0.0f, // bottom left
+            -0.5f, 0.5f, 0.5f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,     1.0f, 0.0f, // bottom right
+            -0.5f, 0.5f, -0.5f,  0.0f, 1.0f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,     1.0f, 1.0f, // top right
+            0.5f, 0.5f, -0.5f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,     0.0f, 1.0f, // top left
 
             // Cara inferior
             -0.5f, -0.5f, 0.5f, 0.0f, -1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, // bottom left
@@ -149,7 +149,7 @@ namespace DemoEngine_Entities
 
         Renderer::GetRender()->CreateSprite(VBO, VAO, EBO, vertex, indices, vertexSize, indexSize);
         Renderer::GetRender()->BindTexture(textureName, textureId);
-
+        
         hasTexture = true;
     }
 
@@ -162,11 +162,11 @@ namespace DemoEngine_Entities
     {
         if (hasTexture)
         {
-            Renderer::GetRender()->DrawEntity3D(VAO, indexSize, color, model, textureId, material);
+            Renderer::GetRender()->DrawEntity3D(VAO, indexSize, color, transform->GetModelLocalMatrix(), textureId, material);
         }
         else
         {
-            Renderer::GetRender()->DrawEntity2D(VAO, model, color, indexSize);
+            Renderer::GetRender()->DrawEntity2D(VAO, transform->GetModelLocalMatrix(), color, indexSize);
         }
     }
 }

@@ -1,8 +1,10 @@
 #pragma once
 #include "Shape.h"
 #include "../Animation/Animation.h"
+#include "../Render/Renderer.h"
 
 using namespace DemoEngine_Animations;
+using namespace DemoEngine_Renderer;
 
 namespace DemoEngine_Entities
 {
@@ -17,12 +19,12 @@ namespace DemoEngine_Entities
 		int height;
 		unsigned int textureId;
 
-		bool changedAnim = false;
-
-
 	public:
-		Sprite(const char* textureName, int width, int height, vec4 rgba, vec3 newPosition, vec3 newScale, vec3 newRotation, bool filterModeNearest);
-		Sprite(const char* textureName, int textureWidth, int textureHeight, int startX, int startY, int cropWidth, int cropHeight, vec4 rgba, vec3 newPosition, vec3 newScale, vec3 newRotation, bool filterModeNearest);
+		Sprite(const char* textureName, int width, int height, vec4 rgba, vec3 newPosition, vec3 newScale,
+			   vec3 newRotation);
+		Sprite(const char* textureName, int textureWidth, int textureHeight, int startX, int startY, int cropWidth,
+			   int cropHeight,
+			   vec4 rgba, vec3 newPosition, vec3 newScale, vec3 newRotation);
 		~Sprite();
 
 		void SetUV(Frame frame);

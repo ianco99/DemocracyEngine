@@ -4,7 +4,7 @@ namespace DemoEngine_Renderer
 {
     Renderer* Renderer::RendererInstance = nullptr;
 
-    Renderer::Renderer(vec2 windowXY, Camera* camera, LightManager* light_manager)
+    Renderer::Renderer(vec2 windowXY, DemoEngine_Camera::Camera* camera, LightManager* light_manager)
     {
         RendererInstance = this;
 
@@ -41,6 +41,39 @@ namespace DemoEngine_Renderer
 
         glEnable(GL_ALPHA_TEST);
         glAlphaFunc(GL_GREATER, 0.0f);
+        
+        float cube_vertices[] = {
+            -0.5f, -0.5f, -0.5f,
+             0.5f, -0.5f, -0.5f,
+             0.5f,  0.5f, -0.5f,
+            -0.5f,  0.5f, -0.5f,
+            -0.5f, -0.5f,  0.5f,
+             0.5f, -0.5f,  0.5f,
+             0.5f,  0.5f,  0.5f,
+            -0.5f,  0.5f,  0.5f,
+        };
+        unsigned int cube_indices[] = {
+            0, 1, 1, 2, 2, 3, 3, 0, // Bottom face
+            4, 5, 5, 6, 6, 7, 7, 4, // Top face
+            0, 4, 1, 5, 2, 6, 3, 7  // Vertical lines
+        };
+
+        glGenVertexArrays(1, &m_wireCubeVAO);
+        glGenBuffers(1, &m_wireCubeVBO);
+        glGenBuffers(1, &m_wireCubeEBO);
+
+        glBindVertexArray(m_wireCubeVAO);
+
+        glBindBuffer(GL_ARRAY_BUFFER, m_wireCubeVBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(cube_vertices), cube_vertices, GL_STATIC_DRAW);
+
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_wireCubeEBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cube_indices), cube_indices, GL_STATIC_DRAW);
+
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(0);
+
+        glBindVertexArray(0);
     }
 
     Renderer::~Renderer()
@@ -51,12 +84,17 @@ namespace DemoEngine_Renderer
         delete MainCamera;
         delete lightManager;
 
+        glDeleteVertexArrays(1, &m_wireCubeVAO);
+        glDeleteBuffers(1, &m_wireCubeVBO);
+        glDeleteBuffers(1, &m_wireCubeEBO);
+
         std::cout << "Deleted renderer." << std::endl;
     }
 
     void Renderer::Update()
     {
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        drawCallsInFrame = 0;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
@@ -212,7 +250,7 @@ namespace DemoEngine_Renderer
         lightShader->SetVec3("material.specular", material.specular);
         lightShader->SetFloat("material.shininess", material.shininess);
 
-        lightShader->SetVec3("viewPos", MainCamera->getPosition());
+        lightShader->SetVec3("viewPos", MainCamera->GetCameraPosition());
 
         lightManager->UploadToShader(lightShader);
 
@@ -233,10 +271,11 @@ namespace DemoEngine_Renderer
         lightShader->UnuseShader();
     }
 
-    void Renderer::DrawModel(unsigned int VAO, int sizeIndex, vec4 color, mat4x4 model, vector<DemoEngine_Importer::Texture> textures,
+    void Renderer::DrawModel(unsigned int VAO, int sizeIndex, vec4 color, mat4x4 model, vector<Texture> textures,
                              Material material)
     {
         modelShader->UseShader();
+        drawCallsInFrame++;
 
         modelShader->SetMat4("model", model);
         modelShader->SetMat4("view", MainCamera->GetCameraView());
@@ -247,7 +286,7 @@ namespace DemoEngine_Renderer
         modelShader->SetVec3("material.specular", material.specular);
         modelShader->SetFloat("material.shininess", material.shininess);
 
-        modelShader->SetVec3("viewPos", MainCamera->getPosition());
+        modelShader->SetVec3("viewPos", MainCamera->GetCameraPosition());
 
         lightManager->UploadToShader(modelShader);
 
@@ -296,6 +335,35 @@ namespace DemoEngine_Renderer
         glActiveTexture(GL_TEXTURE0);
 
         modelShader->UnuseShader();
+    }
+
+    void Renderer::DrawWireBox(const BoundingBox& box, const mat4& modelMatrix, const vec4& color, float lineWidth)
+    {
+        primitiveShader->UseShader();
+        
+        vec3 size = box.max - box.min;
+        vec3 center = (box.max + box.min) * 0.5f;
+        
+        mat4 boxTransform = modelMatrix;
+        boxTransform = glm::translate(boxTransform, center);
+        boxTransform = glm::scale(boxTransform, size);
+        
+        mat4 MVP = MainCamera->GetCameraProyection() * MainCamera->GetCameraView() * boxTransform;
+        primitiveShader->SetMat4("u_MVP", MVP);
+        primitiveShader->SetVec4("u_Color", color);
+
+        glLineWidth(lineWidth);
+
+        glBindVertexArray(m_wireCubeVAO);
+        glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, 0);
+        glBindVertexArray(0);
+
+        primitiveShader->UnuseShader();
+    }
+
+    unsigned int Renderer::GetDrawCalls() const
+    {
+        return drawCallsInFrame;
     }
 
 

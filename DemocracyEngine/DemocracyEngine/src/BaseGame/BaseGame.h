@@ -5,6 +5,7 @@
 
 using namespace DemoEngine_Window;
 using namespace DemoEngine_Renderer;
+using namespace DemoEngine_Camera;
 
 namespace DemoEngine_BaseGame
 {

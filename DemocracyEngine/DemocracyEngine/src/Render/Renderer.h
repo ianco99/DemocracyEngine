@@ -1,5 +1,7 @@
 #pragma once
+
 #include "../Tools/Export.h"
+#include "../Tools/stb_image.h"
 #include <iostream>
 #include "Shader.h"
 #include "LightManager.h"
@@ -11,11 +13,13 @@
 #include "../Tools/TextureImporter.h"
 #include "../Window/Window.h"
 #include "Material.h"
+#include "../Mesh/BoundingBox.h"
 #include "../Mesh/Importer3D.h"
 
 using namespace glm;
 using namespace DemoEngine_Window;
 using namespace DemoEngine_Tools;
+using namespace DemoEngine_Geometry;
 
 namespace DemoEngine_Renderer
 {
@@ -28,14 +32,17 @@ namespace DemoEngine_Renderer
         Shader* lightShader;
         Shader* modelShader;
 
+        unsigned int m_wireCubeVAO = 0, m_wireCubeVBO = 0, m_wireCubeEBO = 0;
+        unsigned int drawCallsInFrame = 0;
+
     public:
-        Renderer(vec2 windowXY, Camera* camera, LightManager* light_manager);
+        Renderer(vec2 windowXY, DemoEngine_Camera::Camera* camera, LightManager* light_manager);
         ~Renderer();
 
         static Renderer* GetRender();
         static Renderer* RendererInstance;
 
-        Camera* MainCamera;
+        DemoEngine_Camera::Camera* MainCamera;
         LightManager* lightManager;
         void RenderFrame();
         void Update();
@@ -47,7 +54,9 @@ namespace DemoEngine_Renderer
         void CreateSprite(unsigned int& VBO, unsigned int& VAO, unsigned int& EBO, float* positions, int* indexs, int positionsSize, int indexSize);
         void DrawTexture(unsigned int VAO, int sizeIndex, vec4 color, mat4x4 model, unsigned int& idTexture);
         void DrawEntity3D(unsigned int VAO, int sizeIndex, vec4 color, mat4x4 model, unsigned int idTexture, Material material);
-        void DrawModel(unsigned int VAO, int sizeIndex, vec4 color, mat4x4 model, vector<DemoEngine_Importer::Texture> textures, Material material);
+        void DrawModel(unsigned int VAO, int sizeIndex, vec4 color, mat4x4 model, vector<Texture> textures, Material material);
+        void DrawWireBox(const BoundingBox& box, const mat4& modelMatrix, const vec4& color, float lineWidth);
+        unsigned int GetDrawCalls() const;
         void BindTexture(const char* textureName, unsigned& textureID, GLint TextureFilter = GL_LINEAR);
     };
 }

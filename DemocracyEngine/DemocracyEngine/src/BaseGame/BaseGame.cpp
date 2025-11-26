@@ -16,7 +16,7 @@ namespace DemoEngine_BaseGame
         windowXY.y = 720;
 
         MainCamera = new Camera(windowXY, 20000.0f, {0,0,0}, {0,-90,0}, {1,1,1}, CameraMode::ThirdPerson);
-        MainCamera->setPosition(vec3{0,0,0});
+        MainCamera->SetCameraPosition(vec3{0,0,0});
         lightManager = new LightManager();
 		
         window = new Window(windowXY.x, windowXY.y, "Democracy Engine");
