@@ -3,6 +3,7 @@
 #include "CollisionManager/CollisionManager.h"
 #include "Entities/Cube.h"
 #include "Entities/Model3D.h"
+#include "Scene/Scene.h"
 
 using namespace DemoEngine_BaseGame;
 using namespace DemoEngine_Entities;
@@ -17,6 +18,7 @@ private:
 	vec4 Kcolor;
 
 	vec3 lastPlayerPos;
+	Scene* testScene = nullptr;
 
 	Model3D* shield;
 	Model3D* bow;
@@ -40,6 +42,10 @@ private:
 
 	DemoEngine_Animations::DemoTimer* timer;
 
+	Transform* tankTurretTransform = nullptr;
+	Transform* tankLeftCannonTransform = nullptr;
+	Transform* tankRightCannonTransform = nullptr;
+	
 public:
 	EarthGame();
 	~EarthGame();

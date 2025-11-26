@@ -11,6 +11,8 @@ EarthGame::~EarthGame()
 
 void EarthGame::Init()
 {
+    testScene = new Scene();
+    
     Kposition = vec3{0, 0, 100};
     Kscale = vec3{20, 20, 20};
     Krotation = vec3{0, 0, 0};
@@ -22,7 +24,6 @@ void EarthGame::Init()
 
     pCube = new Cube(Kposition, Krotation, Kscale, path);
     pCube->setMaterial(BlackPlastic);
-
 
     path = "rsc/Mesh/shield.fbx";
     shield = new Model3D(vec3(100, 0, 300), vec3(0, 0, 0), vec3(5, 5, 5), path, false);
@@ -37,6 +38,11 @@ void EarthGame::Init()
     cake = new Model3D(vec3(200, 2, 100), vec3(0, 0, 0), vec3(0.5f, 0.5f, 0.5f), path, false);
     cake->AddTexture("texture_baseColor", "rsc/Texturas/T_cake_Base_color.png", false, true);
 
+    path = "rsc/Mesh/bspPlanesNew4.fbx";
+    Model3D* planes = new Model3D(vec3{0, 0, 0}, vec3{0, 0, 0}, vec3{1, 0.2, 1}, path, false);
+    planes->AddTexture("texture_baseColor", "rsc/Mesh/White.png", false, true);
+    testScene->AddEntity(planes);
+    
 #pragma region Room
     path = "rsc/SpritesAnimations/White.png";
     floor = new Cube(vec3{0, -100, 0}, vec3{0, 0, 0}, vec3{4000, 5, 4000}, path);
@@ -121,6 +127,10 @@ void EarthGame::Init()
 
     
     lightManager->directionalLights.push_back({glm::vec3(200.0f, -1.0f, 5.0f), glm::vec3(0.5f)});
+
+    //tankTurretTransform = cake->transform->FindChildByName("Turret");
+    //tankLeftCannonTransform = Tank->transform->FindChildByName("LeftCannon");
+    //tankRightCannonTransform = Tank->transform->FindChildByName("RightCannon");
 }
 
 void EarthGame::Update()
