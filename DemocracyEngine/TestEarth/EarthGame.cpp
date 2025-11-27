@@ -32,7 +32,7 @@ void EarthGame::Init()
     bike = new Model3D(vec3{700, 40, 900}, vec3{0, 0, 0}, vec3{2, 2, 2}, path, false);
     bike->AddTexture("texture_baseColor", "rsc/Mesh/White.png", false, true);
     bike->setMaterial(WhitePlastic);
-    bike->transform->SetLocalScale(vec3{40, 40, 40});
+    bike->transform->SetLocalScale(vec3{100, 60, 60});
     bike->transform->SetLocalRotation(vec3(-90, 0, 0));
     bike->drawWireBox = true;
     
